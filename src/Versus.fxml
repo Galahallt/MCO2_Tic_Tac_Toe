@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -26,17 +27,25 @@
           <RowConstraints maxHeight="136.5999816894531" minHeight="10.0" prefHeight="135.00001220703126" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane prefHeight="128.0" prefWidth="169.0" style="-fx-border-width: 2; -fx-border-color: #f75b5d;" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: #f75b5d;" GridPane.columnIndex="1" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: #f75b5d;" GridPane.columnIndex="2" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: #f75b5d;" GridPane.rowIndex="1" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: #f75b5d;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: #f75b5d;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: #f75b5d;" GridPane.rowIndex="2" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: #f75b5d;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: #f75b5d;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: #f75b5d;" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: #f75b5d;" GridPane.columnIndex="1" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: #f75b5d;" GridPane.rowIndex="1" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: #f75b5d;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: #f75b5d;" GridPane.columnIndex="2" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: #f75b5d;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: #f75b5d;" GridPane.rowIndex="2" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: #f75b5d;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: #f75b5d;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <AnchorPane layoutX="81.0" layoutY="150.0" prefHeight="430.0" prefWidth="699.0" />
+      <StackPane prefHeight="600.0" prefWidth="799.0" visible="false">
+         <children>
+            <ImageView fitHeight="598.0" fitWidth="805.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@PlayAgain.PNG" />
+               </image>
+            </ImageView>
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>
