@@ -30,10 +30,8 @@ public class Controller {
     public void playClicked() throws IOException {
         level = Integer.parseInt(lvlNum.getText());
         System.out.println("Level: " + level);
-
         Parent root = FXMLLoader.load(getClass().getResource("Versus.fxml"));
         Scene versus = new Scene(root);
-
         window.setScene(versus);
         window.show();
     }
@@ -41,8 +39,8 @@ public class Controller {
     public void click1() {
         if (stck1.getChildren().isEmpty())
         {
-
             ImageView X = new ImageView("X.png");
+            X.setId("X1");
             X.setFitHeight(105);
             X.setFitWidth(110);
             stck1.getChildren().add(X);
@@ -54,6 +52,7 @@ public class Controller {
         if (stck2.getChildren().isEmpty())
         {
             ImageView X = new ImageView("X.png");
+            X.setId("X2");
             X.setFitHeight(105);
             X.setFitWidth(110);
             stck2.getChildren().add(X);
@@ -65,6 +64,7 @@ public class Controller {
     public void click3() {
         if (stck3.getChildren().isEmpty()) {
             ImageView X = new ImageView("X.png");
+            X.setId("X3");
             X.setFitHeight(105);
             X.setFitWidth(110);
             stck3.getChildren().add(X);
@@ -77,6 +77,7 @@ public class Controller {
         if (stck4.getChildren().isEmpty())
         {
             ImageView X = new ImageView("X.png");
+            X.setId("X4");
             X.setFitHeight(105);
             X.setFitWidth(110);
             stck4.getChildren().add(X);
@@ -89,6 +90,7 @@ public class Controller {
         if (stck5.getChildren().isEmpty())
         {
             ImageView X = new ImageView("X.png");
+            X.setId("X5");
             X.setFitHeight(105);
             X.setFitWidth(110);
             stck5.getChildren().add(X);
@@ -101,6 +103,7 @@ public class Controller {
         if (stck6.getChildren().isEmpty())
         {
             ImageView X = new ImageView("X.png");
+            X.setId("X6");
             X.setFitHeight(105);
             X.setFitWidth(110);
             stck6.getChildren().add(X);
@@ -114,6 +117,7 @@ public class Controller {
         if (stck7.getChildren().isEmpty())
         {
             ImageView X = new ImageView("X.png");
+            X.setId("X7");
             X.setFitHeight(105);
             X.setFitWidth(110);
             stck7.getChildren().add(X);
@@ -126,6 +130,7 @@ public class Controller {
         if (stck8.getChildren().isEmpty())
         {
             ImageView X = new ImageView("X.png");
+            X.setId("X8");
             X.setFitHeight(105);
             X.setFitWidth(110);
             stck8.getChildren().add(X);
@@ -138,6 +143,7 @@ public class Controller {
         if (stck9.getChildren().isEmpty())
         {
             ImageView X = new ImageView("X.png");
+            X.setId("X9");
             X.setFitHeight(105);
             X.setFitWidth(110);
             stck9.getChildren().add(X);
@@ -149,6 +155,7 @@ public class Controller {
 
     public void botMove()
     {
+        System.out.println(stck1.getChildren().contains(stck1.lookup("#X1")));
         if (level == 0)
             level0();
     }
@@ -179,38 +186,47 @@ public class Controller {
             {
                 int i = 1 + rand.nextInt(10);
                 if (i == 1 && stck1.getChildren().isEmpty()) {
+                    O.setId("O1");
                     stck1.getChildren().add(O);
                     valid = 1;
                 }
                 else if (i == 2 && stck2.getChildren().isEmpty()) {
+                    O.setId("O2");
                     stck2.getChildren().add(O);
                     valid = 1;
                 }
                 else if (i == 3 && stck3.getChildren().isEmpty()) {
+                    O.setId("O3");
                     stck3.getChildren().add(O);
                     valid = 1;
                 }
                 else if (i == 4 && stck4.getChildren().isEmpty()) {
+                    O.setId("O4");
                     stck4.getChildren().add(O);
                     valid = 1;
                 }
                 else if (i == 5 && stck5.getChildren().isEmpty()) {
+                    O.setId("O5");
                     stck5.getChildren().add(O);
                     valid = 1;
                 }
                 else if (i == 6 && stck6.getChildren().isEmpty()) {
+                    O.setId("O6");
                     stck6.getChildren().add(O);
                     valid = 1;
                 }
                 else if (i == 7 && stck7.getChildren().isEmpty()) {
+                    O.setId("O7");
                     stck7.getChildren().add(O);
                     valid = 1;
                 }
                 else if (i == 8 && stck8.getChildren().isEmpty()) {
+                    O.setId("O8");
                     stck8.getChildren().add(O);
                     valid = 1;
                 }
                 else if (i == 9 && stck9.getChildren().isEmpty()) {
+                    O.setId("O9");
                     stck9.getChildren().add(O);
                     valid = 1;
                 }
