@@ -17,9 +17,7 @@ public class Main extends Application {
         Scene menu = new Scene(root);
 
         window.setTitle("Tic Tac Toe");
-
         window.setScene(menu);
-
         window.show();
     }
 

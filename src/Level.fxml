@@ -34,7 +34,7 @@
             <Image url="@Arrow%20(2).png" />
          </image>
       </ImageView>
-      <TextField alignment="CENTER" focusTraversable="false" layoutX="377.0" layoutY="289.0" prefHeight="69.0" prefWidth="91.0" style="-fx-border-color: black; -fx-background-color: transparent; -fx-border-width: 3;" text="0">
+      <TextField fx:id="lvlNum" alignment="CENTER" focusTraversable="false" layoutX="377.0" layoutY="289.0" prefHeight="69.0" prefWidth="91.0" style="-fx-border-color: black; -fx-background-color: transparent; -fx-border-width: 3;" text="0">
          <font>
             <Font name="Comic Sans MS Italic" size="29.0" />
          </font>
