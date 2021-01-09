@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
       <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -55,15 +55,15 @@
           <RowConstraints maxHeight="136.5999816894531" minHeight="10.0" prefHeight="135.00001220703126" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: black;" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: black;" GridPane.columnIndex="1" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: black;" GridPane.rowIndex="1" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: black;" GridPane.columnIndex="2" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: black;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: black;" GridPane.rowIndex="2" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: black;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <StackPane fx:id="stck1" onMouseClicked="#click1" prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: black;" />
+            <StackPane fx:id="stck2" onMouseClicked="#click2" prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: black;" GridPane.columnIndex="1" />
+            <StackPane fx:id="stck4" onMouseClicked="#click4" prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: black;" GridPane.rowIndex="1" />
+            <StackPane fx:id="stck5" onMouseClicked="#click5" prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <StackPane fx:id="stck3" onMouseClicked="#click3" prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: black;" GridPane.columnIndex="2" />
+            <StackPane fx:id="stck6" onMouseClicked="#click6" prefHeight="150.0" prefWidth="161.0" style="-fx-border-width: 2; -fx-border-color: black;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <StackPane fx:id="stck7" onMouseClicked="#click7" prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: black;" GridPane.rowIndex="2" />
+            <StackPane fx:id="stck8" onMouseClicked="#click8" prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <StackPane fx:id="stck9" onMouseClicked="#click9" prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: black;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <AnchorPane prefHeight="600.0" prefWidth="800.0" visible="false">
