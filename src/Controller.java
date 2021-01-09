@@ -27,7 +27,6 @@ public class Controller {
 
     private int level;
 
-
     public void playClicked() throws IOException {
         level = Integer.parseInt(lvlNum.getText());
         System.out.println("Level: " + level);
@@ -42,6 +41,7 @@ public class Controller {
     public void click1() {
         if (stck1.getChildren().isEmpty())
         {
+
             ImageView X = new ImageView("X.png");
             X.setFitHeight(105);
             X.setFitWidth(110);
@@ -63,8 +63,7 @@ public class Controller {
 
     }
     public void click3() {
-        if (stck3.getChildren().isEmpty())
-        {
+        if (stck3.getChildren().isEmpty()) {
             ImageView X = new ImageView("X.png");
             X.setFitHeight(105);
             X.setFitWidth(110);
