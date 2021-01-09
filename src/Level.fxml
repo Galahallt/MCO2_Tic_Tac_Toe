@@ -24,12 +24,12 @@
             <Image url="@Pencil%20(2).png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="61.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true" rotate="-31.0">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="35.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true" rotate="-31.0">
          <image>
             <Image url="@bulb.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="156.0" fitWidth="121.0" layoutX="58.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" rotate="45.0">
+      <ImageView fitHeight="156.0" fitWidth="121.0" layoutX="204.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true" rotate="45.0">
          <image>
             <Image url="@Arrow%20(2).png" />
          </image>
