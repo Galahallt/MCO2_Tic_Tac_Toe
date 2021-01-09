@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.Random;
 
 public class Controller {
     @FXML private TextField lvlNum;
@@ -39,66 +40,182 @@ public class Controller {
     }
 
     public void click1() {
-        ImageView X = new ImageView("X.png");
-        X.setFitHeight(105);
-        X.setFitWidth(110);
-        stck1.getChildren().add(X);
-        System.out.println("One");
+        if (stck1.getChildren().isEmpty())
+        {
+            ImageView X = new ImageView("X.png");
+            X.setFitHeight(105);
+            X.setFitWidth(110);
+            stck1.getChildren().add(X);
+            botMove();
+            System.out.println("One");
+        }
     }
     public void click2() {
-        ImageView X = new ImageView("X.png");
-        X.setFitHeight(105);
-        X.setFitWidth(110);
-        stck2.getChildren().add(X);
-        System.out.println("Two");
+        if (stck2.getChildren().isEmpty())
+        {
+            ImageView X = new ImageView("X.png");
+            X.setFitHeight(105);
+            X.setFitWidth(110);
+            stck2.getChildren().add(X);
+            botMove();
+            System.out.println("Two");
+        }
+
     }
     public void click3() {
-        ImageView X = new ImageView("X.png");
-        X.setFitHeight(105);
-        X.setFitWidth(110);
-        stck3.getChildren().add(X);
-        System.out.println("Three");
+        if (stck3.getChildren().isEmpty())
+        {
+            ImageView X = new ImageView("X.png");
+            X.setFitHeight(105);
+            X.setFitWidth(110);
+            stck3.getChildren().add(X);
+            botMove();
+            System.out.println("Three");
+        }
+
     }
     public void click4() {
-        ImageView X = new ImageView("X.png");
-        X.setFitHeight(105);
-        X.setFitWidth(110);
-        stck4.getChildren().add(X);
-        System.out.println("Four");
+        if (stck4.getChildren().isEmpty())
+        {
+            ImageView X = new ImageView("X.png");
+            X.setFitHeight(105);
+            X.setFitWidth(110);
+            stck4.getChildren().add(X);
+            botMove();
+            System.out.println("Four");
+        }
+
     }
     public void click5() {
-        ImageView X = new ImageView("X.png");
-        X.setFitHeight(105);
-        X.setFitWidth(110);
-        stck5.getChildren().add(X);
-        System.out.println("Five");
+        if (stck5.getChildren().isEmpty())
+        {
+            ImageView X = new ImageView("X.png");
+            X.setFitHeight(105);
+            X.setFitWidth(110);
+            stck5.getChildren().add(X);
+            botMove();
+            System.out.println("Five");
+        }
+
     }
     public void click6() {
-        ImageView X = new ImageView("X.png");
-        X.setFitHeight(105);
-        X.setFitWidth(110);
-        stck6.getChildren().add(X);
-        System.out.println("Six");
+        if (stck6.getChildren().isEmpty())
+        {
+            ImageView X = new ImageView("X.png");
+            X.setFitHeight(105);
+            X.setFitWidth(110);
+            stck6.getChildren().add(X);
+            botMove();
+            System.out.println("Six");
+        }
+
+
     }
     public void click7() {
-        ImageView X = new ImageView("X.png");
-        X.setFitHeight(105);
-        X.setFitWidth(110);
-        stck7.getChildren().add(X);
-        System.out.println("Seven");
+        if (stck7.getChildren().isEmpty())
+        {
+            ImageView X = new ImageView("X.png");
+            X.setFitHeight(105);
+            X.setFitWidth(110);
+            stck7.getChildren().add(X);
+            botMove();
+            System.out.println("Seven");
+        }
+
     }
     public void click8() {
-        ImageView X = new ImageView("X.png");
-        X.setFitHeight(105);
-        X.setFitWidth(110);
-        stck8.getChildren().add(X);
-        System.out.println("Eight");
+        if (stck8.getChildren().isEmpty())
+        {
+            ImageView X = new ImageView("X.png");
+            X.setFitHeight(105);
+            X.setFitWidth(110);
+            stck8.getChildren().add(X);
+            botMove();
+            System.out.println("Eight");
+        }
+
     }
     public void click9() {
-        ImageView X = new ImageView("X.png");
-        X.setFitHeight(105);
-        X.setFitWidth(110);
-        stck9.getChildren().add(X);
-        System.out.println("Nine");
+        if (stck9.getChildren().isEmpty())
+        {
+            ImageView X = new ImageView("X.png");
+            X.setFitHeight(105);
+            X.setFitWidth(110);
+            stck9.getChildren().add(X);
+            botMove();
+            System.out.println("Nine");
+        }
+
+    }
+
+    public void botMove()
+    {
+        if (level == 0)
+            level0();
+    }
+
+    public boolean canMove()
+    {
+        if (stck1.getChildren().isEmpty() || stck2.getChildren().isEmpty() ||
+                stck3.getChildren().isEmpty() || stck4.getChildren().isEmpty() ||
+                stck5.getChildren().isEmpty() || stck6.getChildren().isEmpty() ||
+                stck7.getChildren().isEmpty() || stck8.getChildren().isEmpty() ||
+                stck9.getChildren().isEmpty())
+            return true;
+        return false;
+    }
+
+    public void level0()
+    {
+        Random rand = new Random();
+        ImageView O = new ImageView("O.png");
+        O.setFitHeight(105);
+        O.setFitWidth(110);
+
+        int valid = 0;
+
+        if (canMove())
+        {
+            while (valid == 0)
+            {
+                int i = 1 + rand.nextInt(10);
+                if (i == 1 && stck1.getChildren().isEmpty()) {
+                    stck1.getChildren().add(O);
+                    valid = 1;
+                }
+                else if (i == 2 && stck2.getChildren().isEmpty()) {
+                    stck2.getChildren().add(O);
+                    valid = 1;
+                }
+                else if (i == 3 && stck3.getChildren().isEmpty()) {
+                    stck3.getChildren().add(O);
+                    valid = 1;
+                }
+                else if (i == 4 && stck4.getChildren().isEmpty()) {
+                    stck4.getChildren().add(O);
+                    valid = 1;
+                }
+                else if (i == 5 && stck5.getChildren().isEmpty()) {
+                    stck5.getChildren().add(O);
+                    valid = 1;
+                }
+                else if (i == 6 && stck6.getChildren().isEmpty()) {
+                    stck6.getChildren().add(O);
+                    valid = 1;
+                }
+                else if (i == 7 && stck7.getChildren().isEmpty()) {
+                    stck7.getChildren().add(O);
+                    valid = 1;
+                }
+                else if (i == 8 && stck8.getChildren().isEmpty()) {
+                    stck8.getChildren().add(O);
+                    valid = 1;
+                }
+                else if (i == 9 && stck9.getChildren().isEmpty()) {
+                    stck9.getChildren().add(O);
+                    valid = 1;
+                }
+            }
+        }
     }
 }
