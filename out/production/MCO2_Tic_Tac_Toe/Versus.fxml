@@ -33,27 +33,27 @@
             <Image url="@flower.png" />
          </image>
       </ImageView>
-      <TextField editable="false" focusTraversable="false" layoutX="264.0" layoutY="58.0" prefHeight="32.0" prefWidth="151.0" style="-fx-background-color: transparent;" text="0">
+      <TextField fx:id="dispUser" editable="false" focusTraversable="false" layoutX="264.0" layoutY="58.0" prefHeight="32.0" prefWidth="151.0" style="-fx-background-color: transparent;" text="0">
          <font>
             <Font name="Comic Sans MS" size="28.0" />
          </font>
       </TextField>
-      <TextField editable="false" focusTraversable="false" layoutX="583.0" layoutY="58.0" prefHeight="32.0" prefWidth="151.0" style="-fx-background-color: transparent;" text="0">
+      <TextField fx:id="dispComp" editable="false" focusTraversable="false" layoutX="583.0" layoutY="58.0" prefHeight="32.0" prefWidth="151.0" style="-fx-background-color: transparent;" text="0">
          <font>
             <Font name="Comic Sans MS" size="28.0" />
          </font>
       </TextField>
-      <GridPane layoutX="173.0" layoutY="152.0" prefHeight="360.0" prefWidth="486.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 1;">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <GridPane fx:id="grid" layoutX="173.0" layoutY="152.0" prefHeight="360.0" prefWidth="486.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 1;">
+         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="143.9999969482422" minHeight="10.0" prefHeight="123.59999389648438" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="167.2000061035156" minHeight="10.0" prefHeight="140.40000610351564" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="136.5999816894531" minHeight="10.0" prefHeight="135.00001220703126" vgrow="SOMETIMES" />
-        </rowConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="143.9999969482422" minHeight="10.0" prefHeight="123.59999389648438" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="167.2000061035156" minHeight="10.0" prefHeight="140.40000610351564" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="136.5999816894531" minHeight="10.0" prefHeight="135.00001220703126" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
             <StackPane fx:id="stck1" onMouseClicked="#click1" prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: black;" />
             <StackPane fx:id="stck2" onMouseClicked="#click2" prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: black;" GridPane.columnIndex="1" />
@@ -66,7 +66,7 @@
             <StackPane fx:id="stck9" onMouseClicked="#click9" prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 2; -fx-border-color: black;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <AnchorPane prefHeight="600.0" prefWidth="800.0" visible="false">
+      <AnchorPane fx:id="playAgain" disable="true" prefHeight="600.0" prefWidth="800.0" visible="false">
          <children>
             <ImageView fitHeight="598.0" fitWidth="805.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -83,12 +83,12 @@
                   <Image url="@eraser.png" />
                </image>
             </ImageView>
-            <Button layoutX="456.0" layoutY="228.0" mnemonicParsing="false" prefHeight="142.0" prefWidth="199.0" style="-fx-background-color: transparent;" text="NO">
+            <Button fx:id="exit" layoutX="456.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#noClicked" prefHeight="142.0" prefWidth="199.0" style="-fx-background-color: transparent;" text="NO">
                <font>
                   <Font name="Comic Sans MS" size="60.0" />
                </font>
             </Button>
-            <Button layoutX="190.0" layoutY="232.0" mnemonicParsing="false" prefHeight="142.0" prefWidth="199.0" style="-fx-background-color: transparent;" text="YES">
+            <Button fx:id="again" layoutX="190.0" layoutY="232.0" mnemonicParsing="false" onMouseClicked="#playAgainClicked" prefHeight="142.0" prefWidth="199.0" style="-fx-background-color: transparent;" text="YES">
                <font>
                   <Font name="Comic Sans MS" size="59.0" />
                </font>

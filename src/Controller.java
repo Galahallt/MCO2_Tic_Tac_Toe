@@ -3,6 +3,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -26,8 +27,9 @@ public class Controller {
     @FXML private StackPane stck8;
     @FXML private StackPane stck9;
 
-    @FXML private Button again;
-    @FXML private Button exit;
+    @FXML private AnchorPane playAgain;
+    @FXML private Button again; // yes
+    @FXML private Button exit; // no
 
     private Stage window = Main.getWindow();
 
@@ -40,6 +42,7 @@ public class Controller {
 
     public void playClicked() throws IOException {
         level = Integer.parseInt(lvlNum.getText());
+        lvlNum.setText("0");
         System.out.println("Level: " + level);
 
 //        xs = new ArrayList<>();
@@ -58,6 +61,7 @@ public class Controller {
 //        dispComp.setText(Integer.toString(scoreComp));
     }
 
+    /*
     public void playAgain() throws IOException {
         xs = new ArrayList<>();
         os = new ArrayList<>();
@@ -67,13 +71,11 @@ public class Controller {
         window.setScene(versus);
         window.show();
 
-        grid.setDisable(false);
-        again.setDisable(true);
-        exit.setDisable(true);
 
-        dispUser.setText(Integer.toString(scoreUser));
-        dispComp.setText(Integer.toString(scoreComp));
+
+
     }
+    */
 
     public boolean checker(ArrayList<Integer> spaces) {
         // Corners
@@ -126,7 +128,6 @@ public class Controller {
         {
             if (!xs.contains(1) && !os.contains(1)) {
                 ImageView X = new ImageView("X.png");
-                X.setId("X1");
                 X.setFitHeight(105);
                 X.setFitWidth(110);
                 stck1.getChildren().add(X);
@@ -143,6 +144,7 @@ public class Controller {
                 grid.setDisable(true);
                 again.setDisable(false);
                 exit.setDisable(false);
+                showPlayAgain(true);
             }
         }
     }
@@ -151,7 +153,6 @@ public class Controller {
         {
             if (!xs.contains(2) && !os.contains(2)) {
                 ImageView X = new ImageView("X.png");
-                X.setId("X2");
                 X.setFitHeight(105);
                 X.setFitWidth(110);
                 stck2.getChildren().add(X);
@@ -168,6 +169,7 @@ public class Controller {
                 grid.setDisable(true);
                 again.setDisable(false);
                 exit.setDisable(false);
+                showPlayAgain(true);
             }
         }
 
@@ -176,7 +178,6 @@ public class Controller {
         if (stck3.getChildren().isEmpty()) {
             if (!xs.contains(3) && !os.contains(3)) {
                 ImageView X = new ImageView("X.png");
-                X.setId("X3");
                 X.setFitHeight(105);
                 X.setFitWidth(110);
                 stck3.getChildren().add(X);
@@ -193,6 +194,7 @@ public class Controller {
                 grid.setDisable(true);
                 again.setDisable(false);
                 exit.setDisable(false);
+                showPlayAgain(true);
             }
         }
 
@@ -202,7 +204,6 @@ public class Controller {
         {
             if (!xs.contains(4) && !os.contains(4)) {
                 ImageView X = new ImageView("X.png");
-                X.setId("X4");
                 X.setFitHeight(105);
                 X.setFitWidth(110);
                 stck4.getChildren().add(X);
@@ -219,6 +220,7 @@ public class Controller {
                 grid.setDisable(true);
                 again.setDisable(false);
                 exit.setDisable(false);
+                showPlayAgain(true);
             }
         }
 
@@ -226,9 +228,8 @@ public class Controller {
     public void click5() {
         if (stck5.getChildren().isEmpty())
         {
-            if (!xs.contains(1) && !os.contains(1)) {
+            if (!xs.contains(5) && !os.contains(5)) {
                 ImageView X = new ImageView("X.png");
-                X.setId("X5");
                 X.setFitHeight(105);
                 X.setFitWidth(110);
                 stck5.getChildren().add(X);
@@ -245,6 +246,7 @@ public class Controller {
                 grid.setDisable(true);
                 again.setDisable(false);
                 exit.setDisable(false);
+                showPlayAgain(true);
             }
         }
 
@@ -254,7 +256,6 @@ public class Controller {
         {
             if (!xs.contains(6) && !os.contains(6)) {
                 ImageView X = new ImageView("X.png");
-                X.setId("X6");
                 X.setFitHeight(105);
                 X.setFitWidth(110);
                 stck6.getChildren().add(X);
@@ -271,6 +272,7 @@ public class Controller {
                 grid.setDisable(true);
                 again.setDisable(false);
                 exit.setDisable(false);
+                showPlayAgain(true);
             }
         }
 
@@ -281,7 +283,6 @@ public class Controller {
         {
             if (!xs.contains(7) && !os.contains(7)) {
                 ImageView X = new ImageView("X.png");
-                X.setId("X7");
                 X.setFitHeight(105);
                 X.setFitWidth(110);
                 stck7.getChildren().add(X);
@@ -298,6 +299,7 @@ public class Controller {
                 grid.setDisable(true);
                 again.setDisable(false);
                 exit.setDisable(false);
+                showPlayAgain(true);
             }
         }
 
@@ -307,7 +309,6 @@ public class Controller {
         {
             if (!xs.contains(8) && !os.contains(8)) {
                 ImageView X = new ImageView("X.png");
-                X.setId("X8");
                 X.setFitHeight(105);
                 X.setFitWidth(110);
                 stck8.getChildren().add(X);
@@ -324,6 +325,7 @@ public class Controller {
                 grid.setDisable(true);
                 again.setDisable(false);
                 exit.setDisable(false);
+                showPlayAgain(true);
             }
         }
 
@@ -333,7 +335,6 @@ public class Controller {
         {
             if (!xs.contains(9) && !os.contains(9)) {
                 ImageView X = new ImageView("X.png");
-                X.setId("X9");
                 X.setFitHeight(105);
                 X.setFitWidth(110);
                 stck9.getChildren().add(X);
@@ -350,6 +351,7 @@ public class Controller {
                 grid.setDisable(true);
                 again.setDisable(false);
                 exit.setDisable(false);
+                showPlayAgain(true);
             }
         }
 
@@ -357,7 +359,7 @@ public class Controller {
 
     public void botMove()
     {
-        System.out.println(stck1.getChildren().contains(stck1.lookup("#X1")));
+        System.out.println("Bot move: " + stck1.getChildren().isEmpty());
         if (level == 0)
             level0();
     }
@@ -388,47 +390,38 @@ public class Controller {
             {
                 int i = 1 + rand.nextInt(10);
                 if (i == 1 && stck1.getChildren().isEmpty()) {
-                    O.setId("O1");
                     stck1.getChildren().add(O);
                     valid = 1;
                 }
                 else if (i == 2 && stck2.getChildren().isEmpty()) {
-                    O.setId("O2");
                     stck2.getChildren().add(O);
                     valid = 1;
                 }
                 else if (i == 3 && stck3.getChildren().isEmpty()) {
-                    O.setId("O3");
                     stck3.getChildren().add(O);
                     valid = 1;
                 }
                 else if (i == 4 && stck4.getChildren().isEmpty()) {
-                    O.setId("O4");
                     stck4.getChildren().add(O);
                     valid = 1;
                 }
                 else if (i == 5 && stck5.getChildren().isEmpty()) {
-                    O.setId("O5");
                     stck5.getChildren().add(O);
                     valid = 1;
                 }
                 else if (i == 6 && stck6.getChildren().isEmpty()) {
-                    O.setId("O6");
                     stck6.getChildren().add(O);
                     valid = 1;
                 }
                 else if (i == 7 && stck7.getChildren().isEmpty()) {
-                    O.setId("O7");
                     stck7.getChildren().add(O);
                     valid = 1;
                 }
                 else if (i == 8 && stck8.getChildren().isEmpty()) {
-                    O.setId("O8");
                     stck8.getChildren().add(O);
                     valid = 1;
                 }
                 else if (i == 9 && stck9.getChildren().isEmpty()) {
-                    O.setId("O9");
                     stck9.getChildren().add(O);
                     valid = 1;
                 }
@@ -436,7 +429,53 @@ public class Controller {
         }
     }
 
-    public void exit() {
-        System.exit(0);
+    public void clearGrid()
+    {
+        stck1.getChildren().removeAll(stck1.getChildren());
+        stck2.getChildren().removeAll(stck2.getChildren());
+        stck3.getChildren().removeAll(stck3.getChildren());
+        stck4.getChildren().removeAll(stck4.getChildren());
+        stck5.getChildren().removeAll(stck5.getChildren());
+        stck6.getChildren().removeAll(stck6.getChildren());
+        stck7.getChildren().removeAll(stck7.getChildren());
+        stck8.getChildren().removeAll(stck8.getChildren());
+        stck9.getChildren().removeAll(stck9.getChildren());
     }
+    public void showPlayAgain(boolean x)
+    {
+        if (x == true)
+        {
+            playAgain.setDisable(false);
+            playAgain.setVisible(true);
+        }
+        else
+        {
+            playAgain.setVisible(false);
+            playAgain.setDisable(true);
+        }
+    }
+
+    public void playAgainClicked ()
+    {
+        xs = new ArrayList<>();
+        os = new ArrayList<>();
+
+        grid.setDisable(false);
+        System.out.println(stck1.getChildren().isEmpty());
+        clearGrid();
+
+        dispUser.setText(Integer.toString(scoreUser));
+        dispComp.setText(Integer.toString(scoreComp));
+
+        showPlayAgain(false);
+    }
+
+    public void noClicked() throws IOException {
+        clearGrid();
+        Parent root = FXMLLoader.load(getClass().getResource("Level.fxml"));
+        Scene level = new Scene(root);
+        window.setScene(level);
+        window.show();
+    }
+
 }
