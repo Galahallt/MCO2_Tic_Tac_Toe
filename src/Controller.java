@@ -5,6 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -35,6 +36,7 @@ public class Controller {
 
     private ArrayList<Integer> xs = new ArrayList<>();
     private ArrayList<Integer> os = new ArrayList<>();
+
 
     private int level;
     private int scoreUser = 0;
@@ -359,7 +361,6 @@ public class Controller {
 
     public void botMove()
     {
-        System.out.println("Bot move: " + stck1.getChildren().isEmpty());
         if (level == 0)
             level0();
     }
@@ -375,12 +376,72 @@ public class Controller {
         return false;
     }
 
+    public int hasWinningMove(ArrayList<Integer> os)
+    {
+        // checks horizontal
+        if (os.contains(1) && os.contains(2) && !xs.contains(3))
+            return 3;
+        else if (os.contains(2) && os.contains(3) && !xs.contains(1))
+            return 1;
+        else if (os.contains(1) && os.contains(3) && !xs.contains(2))
+            return 2;
+        else if (os.contains(4) && os.contains(5) && !xs.contains(6))
+            return 6;
+        else if (os.contains(5) && os.contains(6) && !xs.contains(4))
+            return 4;
+        else if (os.contains(4) && os.contains(6) && !xs.contains(5))
+            return 5;
+        else if (os.contains(7) && os.contains(8) && !xs.contains(9))
+            return 9;
+        else if (os.contains(8) && os.contains(9) && !xs.contains(7))
+            return 7;
+        else if (os.contains(7) && os.contains(9) && !xs.contains(6))
+            return 6;
+        // checks diagonal
+        if (os.contains(1) && os.contains(5) && !xs.contains(9))
+            return 9;
+        else if (os.contains(5) && os.contains(9) && !xs.contains(1))
+            return 1;
+        else if (os.contains(1) && os.contains(9) && !xs.contains(5))
+            return 5;
+        else if (os.contains(3) && os.contains(5) && !xs.contains(7))
+            return 7;
+        else if (os.contains(5) && os.contains(7) && !xs.contains(3))
+            return 3;
+        else if (os.contains(3) && os.contains(7) && !xs.contains(5))
+            return 5;
+
+
+        // checks vertical
+        if (os.contains(1) && os.contains(4) && !xs.contains(7))
+            return 7;
+        else if (os.contains(4) && os.contains(7) && !xs.contains(1))
+            return 1;
+        else if (os.contains(1) && os.contains(7) && !xs.contains(4))
+            return 4;
+        else if (os.contains(2) && os.contains(5) && !xs.contains(8))
+            return 8;
+        else if (os.contains(5) && os.contains(8) && !xs.contains(2))
+            return 2;
+        else if (os.contains(2) && os.contains(8) && !xs.contains(5))
+            return 5;
+        else if (os.contains(3) && os.contains(6) && !xs.contains(9))
+            return 9;
+        else if (os.contains(6) && os.contains(9) && !xs.contains(3))
+            return 3;
+        else if (os.contains(3) && os.contains(9) && !xs.contains(9))
+            return 9;
+
+        return 0;
+    }
+
     public void level0()
     {
         Random rand = new Random();
         ImageView O = new ImageView("O.png");
         O.setFitHeight(105);
         O.setFitWidth(110);
+        int i = 0;
 
         int valid = 0;
 
@@ -388,7 +449,12 @@ public class Controller {
         {
             while (valid == 0)
             {
-                int i = 1 + rand.nextInt(10);
+                if (hasWinningMove(os) == 0)
+                    i = 1 + rand.nextInt(10);
+                else {
+                    i = hasWinningMove(os);
+                    System.out.println("Winning Move: " + i);
+                }
                 if (i == 1 && stck1.getChildren().isEmpty()) {
                     stck1.getChildren().add(O);
                     valid = 1;
