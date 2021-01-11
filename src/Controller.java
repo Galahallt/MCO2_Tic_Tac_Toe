@@ -47,24 +47,6 @@ public class Controller {
         lvlNum.setText("0");
         System.out.println("Level: " + level);
 
-//        xs = new ArrayList<>();
-//        os = new ArrayList<>();
-
-        Parent root = FXMLLoader.load(getClass().getResource("Versus.fxml"));
-        Scene versus = new Scene(root);
-        window.setScene(versus);
-        window.show();
-
-//        grid.setDisable(false);
-//        again.setDisable(true);
-//        exit.setDisable(true);
-//
-//        dispUser.setText(Integer.toString(scoreUser));
-//        dispComp.setText(Integer.toString(scoreComp));
-    }
-
-    /*
-    public void playAgain() throws IOException {
         xs = new ArrayList<>();
         os = new ArrayList<>();
 
@@ -72,12 +54,7 @@ public class Controller {
         Scene versus = new Scene(root);
         window.setScene(versus);
         window.show();
-
-
-
-
     }
-    */
 
     public boolean checker(ArrayList<Integer> spaces) {
         // Corners
@@ -134,19 +111,21 @@ public class Controller {
                 X.setFitWidth(110);
                 stck1.getChildren().add(X);
 
-                botMove();
-                System.out.println("One");
-
                 xs.add(1);
-            }
-            if (checker(xs)) {
-                scoreUser++;
-                System.out.println("Winner");
 
-                grid.setDisable(true);
-                again.setDisable(false);
-                exit.setDisable(false);
-                showPlayAgain(true);
+                if (checker(xs)) {
+                    scoreUser++;
+                    System.out.println("User Wins!");
+
+                    grid.setDisable(true);
+                    again.setDisable(false);
+                    exit.setDisable(false);
+                    showPlayAgain(true);
+                }
+                else {
+                    botMove();
+                    System.out.println("One");
+                }
             }
         }
     }
@@ -159,19 +138,19 @@ public class Controller {
                 X.setFitWidth(110);
                 stck2.getChildren().add(X);
 
+                xs.add(2);
+
+                if (checker(xs)) {
+                    scoreUser++;
+                    System.out.println("User Wins!");
+
+                    grid.setDisable(true);
+                    again.setDisable(false);
+                    exit.setDisable(false);
+                    showPlayAgain(true);
+                }
                 botMove();
                 System.out.println("Two");
-
-                xs.add(2);
-            }
-            if (checker(xs)) {
-                scoreUser++;
-                System.out.println("Winner");
-
-                grid.setDisable(true);
-                again.setDisable(false);
-                exit.setDisable(false);
-                showPlayAgain(true);
             }
         }
 
@@ -184,19 +163,21 @@ public class Controller {
                 X.setFitWidth(110);
                 stck3.getChildren().add(X);
 
-                botMove();
-                System.out.println("Three");
-
                 xs.add(3);
-            }
-            if (checker(xs)) {
-                scoreUser++;
-                System.out.println("Winner");
 
-                grid.setDisable(true);
-                again.setDisable(false);
-                exit.setDisable(false);
-                showPlayAgain(true);
+                if (checker(xs)) {
+                    scoreUser++;
+                    System.out.println("User Wins!");
+
+                    grid.setDisable(true);
+                    again.setDisable(false);
+                    exit.setDisable(false);
+                    showPlayAgain(true);
+                }
+                else {
+                    botMove();
+                    System.out.println("Three");
+                }
             }
         }
 
@@ -210,19 +191,20 @@ public class Controller {
                 X.setFitWidth(110);
                 stck4.getChildren().add(X);
 
+                xs.add(4);
+
+                if (checker(xs)) {
+                    scoreUser++;
+                    System.out.println("User Wins!");
+
+                    grid.setDisable(true);
+                    again.setDisable(false);
+                    exit.setDisable(false);
+                    showPlayAgain(true);
+                }
+
                 botMove();
                 System.out.println("Four");
-
-                xs.add(4);
-            }
-            if (checker(xs)) {
-                scoreUser++;
-                System.out.println("Winner");
-
-                grid.setDisable(true);
-                again.setDisable(false);
-                exit.setDisable(false);
-                showPlayAgain(true);
             }
         }
 
@@ -236,20 +218,23 @@ public class Controller {
                 X.setFitWidth(110);
                 stck5.getChildren().add(X);
 
-                botMove();
-                System.out.println("Five");
-
                 xs.add(5);
-            }
-            if (checker(xs)) {
-                scoreUser++;
-                System.out.println("Winner");
 
-                grid.setDisable(true);
-                again.setDisable(false);
-                exit.setDisable(false);
-                showPlayAgain(true);
+                if (checker(xs)) {
+                    scoreUser++;
+                    System.out.println("User Wins!");
+
+                    grid.setDisable(true);
+                    again.setDisable(false);
+                    exit.setDisable(false);
+                    showPlayAgain(true);
+                }
+                else {
+                    botMove();
+                    System.out.println("Five");
+                }
             }
+
         }
 
     }
@@ -262,19 +247,21 @@ public class Controller {
                 X.setFitWidth(110);
                 stck6.getChildren().add(X);
 
-                botMove();
-                System.out.println("Six");
-
                 xs.add(6);
-            }
-            if (checker(xs)) {
-                scoreUser++;
-                System.out.println("Winner");
 
-                grid.setDisable(true);
-                again.setDisable(false);
-                exit.setDisable(false);
-                showPlayAgain(true);
+                if (checker(xs)) {
+                    scoreUser++;
+                    System.out.println("User Wins!");
+
+                    grid.setDisable(true);
+                    again.setDisable(false);
+                    exit.setDisable(false);
+                    showPlayAgain(true);
+                }
+                else {
+                    botMove();
+                    System.out.println("Six");
+                }
             }
         }
 
@@ -289,19 +276,21 @@ public class Controller {
                 X.setFitWidth(110);
                 stck7.getChildren().add(X);
 
-                botMove();
-                System.out.println("Seven");
-
                 xs.add(7);
-            }
-            if (checker(xs)) {
-                scoreUser++;
-                System.out.println("Winner");
 
-                grid.setDisable(true);
-                again.setDisable(false);
-                exit.setDisable(false);
-                showPlayAgain(true);
+                if (checker(xs)) {
+                    scoreUser++;
+                    System.out.println("User Wins!");
+
+                    grid.setDisable(true);
+                    again.setDisable(false);
+                    exit.setDisable(false);
+                    showPlayAgain(true);
+                }
+                else {
+                    botMove();
+                    System.out.println("Seven");
+                }
             }
         }
 
@@ -315,19 +304,21 @@ public class Controller {
                 X.setFitWidth(110);
                 stck8.getChildren().add(X);
 
-                botMove();
-                System.out.println("Eight");
-
                 xs.add(8);
-            }
-            if (checker(xs)) {
-                scoreUser++;
-                System.out.println("Winner");
 
-                grid.setDisable(true);
-                again.setDisable(false);
-                exit.setDisable(false);
-                showPlayAgain(true);
+                if (checker(xs)) {
+                    scoreUser++;
+                    System.out.println("User Wins!");
+
+                    grid.setDisable(true);
+                    again.setDisable(false);
+                    exit.setDisable(false);
+                    showPlayAgain(true);
+                }
+                else {
+                    botMove();
+                    System.out.println("Eight");
+                }
             }
         }
 
@@ -341,19 +332,21 @@ public class Controller {
                 X.setFitWidth(110);
                 stck9.getChildren().add(X);
 
-                botMove();
-                System.out.println("Nine");
-
                 xs.add(9);
-            }
-            if (checker(xs)) {
-                scoreUser++;
-                System.out.println("Winner");
 
-                grid.setDisable(true);
-                again.setDisable(false);
-                exit.setDisable(false);
-                showPlayAgain(true);
+                if (checker(xs)) {
+                    scoreUser++;
+                    System.out.println("User Wins!");
+
+                    grid.setDisable(true);
+                    again.setDisable(false);
+                    exit.setDisable(false);
+                    showPlayAgain(true);
+                }
+                else {
+                    botMove();
+                    System.out.println("User Wins!");
+                }
             }
         }
 
@@ -367,13 +360,11 @@ public class Controller {
 
     public boolean canMove()
     {
-        if (stck1.getChildren().isEmpty() || stck2.getChildren().isEmpty() ||
+        return stck1.getChildren().isEmpty() || stck2.getChildren().isEmpty() ||
                 stck3.getChildren().isEmpty() || stck4.getChildren().isEmpty() ||
                 stck5.getChildren().isEmpty() || stck6.getChildren().isEmpty() ||
                 stck7.getChildren().isEmpty() || stck8.getChildren().isEmpty() ||
-                stck9.getChildren().isEmpty())
-            return true;
-        return false;
+                stck9.getChildren().isEmpty();
     }
 
     public int hasWinningMove(ArrayList<Integer> os)
@@ -502,6 +493,16 @@ public class Controller {
                 }
             }
         }
+
+        if (checker(os)) {
+            scoreComp++;
+            System.out.println("Computer Wins!");
+
+            grid.setDisable(true);
+            again.setDisable(false);
+            exit.setDisable(false);
+            showPlayAgain(true);
+        }
     }
 
     public void clearGrid()
@@ -518,7 +519,7 @@ public class Controller {
     }
     public void showPlayAgain(boolean x)
     {
-        if (x == true)
+        if (x)
         {
             playAgain.setDisable(false);
             playAgain.setVisible(true);
@@ -536,7 +537,6 @@ public class Controller {
         os = new ArrayList<>();
 
         grid.setDisable(false);
-        System.out.println(stck1.getChildren().isEmpty());
         clearGrid();
 
         dispUser.setText(Integer.toString(scoreUser));
