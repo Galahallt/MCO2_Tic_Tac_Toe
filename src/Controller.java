@@ -457,38 +457,47 @@ public class Controller {
                 }
                 if (i == 1 && stck1.getChildren().isEmpty()) {
                     stck1.getChildren().add(O);
+                    os.add(1);
                     valid = 1;
                 }
                 else if (i == 2 && stck2.getChildren().isEmpty()) {
                     stck2.getChildren().add(O);
+                    os.add(2);
                     valid = 1;
                 }
                 else if (i == 3 && stck3.getChildren().isEmpty()) {
                     stck3.getChildren().add(O);
+                    os.add(3);
                     valid = 1;
                 }
                 else if (i == 4 && stck4.getChildren().isEmpty()) {
                     stck4.getChildren().add(O);
+                    os.add(4);
                     valid = 1;
                 }
                 else if (i == 5 && stck5.getChildren().isEmpty()) {
                     stck5.getChildren().add(O);
+                    os.add(5);
                     valid = 1;
                 }
                 else if (i == 6 && stck6.getChildren().isEmpty()) {
                     stck6.getChildren().add(O);
+                    os.add(6);
                     valid = 1;
                 }
                 else if (i == 7 && stck7.getChildren().isEmpty()) {
                     stck7.getChildren().add(O);
+                    os.add(7);
                     valid = 1;
                 }
                 else if (i == 8 && stck8.getChildren().isEmpty()) {
                     stck8.getChildren().add(O);
+                    os.add(8);
                     valid = 1;
                 }
                 else if (i == 9 && stck9.getChildren().isEmpty()) {
                     stck9.getChildren().add(O);
+                    os.add(9);
                     valid = 1;
                 }
             }
