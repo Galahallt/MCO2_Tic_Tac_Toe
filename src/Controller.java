@@ -5,7 +5,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -37,8 +36,9 @@ public class Controller {
     private ArrayList<Integer> xs = new ArrayList<>();
     private ArrayList<Integer> os = new ArrayList<>();
 
-
     private int level;
+    private int round = 0;
+    private int turnCtr = 1;
     private int scoreUser = 0;
     private int scoreComp = 0;
 
@@ -112,6 +112,7 @@ public class Controller {
                 stck1.getChildren().add(X);
 
                 xs.add(1);
+                turnCtr++;
 
                 if (checker(xs)) {
                     scoreUser++;
@@ -139,6 +140,7 @@ public class Controller {
                 stck2.getChildren().add(X);
 
                 xs.add(2);
+                turnCtr++;
 
                 if (checker(xs)) {
                     scoreUser++;
@@ -164,6 +166,7 @@ public class Controller {
                 stck3.getChildren().add(X);
 
                 xs.add(3);
+                turnCtr++;
 
                 if (checker(xs)) {
                     scoreUser++;
@@ -192,6 +195,7 @@ public class Controller {
                 stck4.getChildren().add(X);
 
                 xs.add(4);
+                turnCtr++;
 
                 if (checker(xs)) {
                     scoreUser++;
@@ -219,6 +223,7 @@ public class Controller {
                 stck5.getChildren().add(X);
 
                 xs.add(5);
+                turnCtr++;
 
                 if (checker(xs)) {
                     scoreUser++;
@@ -248,6 +253,7 @@ public class Controller {
                 stck6.getChildren().add(X);
 
                 xs.add(6);
+                turnCtr++;
 
                 if (checker(xs)) {
                     scoreUser++;
@@ -277,6 +283,7 @@ public class Controller {
                 stck7.getChildren().add(X);
 
                 xs.add(7);
+                turnCtr++;
 
                 if (checker(xs)) {
                     scoreUser++;
@@ -305,6 +312,7 @@ public class Controller {
                 stck8.getChildren().add(X);
 
                 xs.add(8);
+                turnCtr++;
 
                 if (checker(xs)) {
                     scoreUser++;
@@ -333,6 +341,7 @@ public class Controller {
                 stck9.getChildren().add(X);
 
                 xs.add(9);
+                turnCtr++;
 
                 if (checker(xs)) {
                     scoreUser++;
@@ -356,6 +365,7 @@ public class Controller {
     {
         if (level == 0)
             level0();
+        turnCtr++;
     }
 
     public boolean canMove()
@@ -505,6 +515,126 @@ public class Controller {
         }
     }
 
+    public boolean isCenter() {
+        return xs.contains(5);
+    }
+
+    public int opposite(int x) {
+        return 1;   // not yet coded
+    }
+
+    public int isCorner() {
+        if (xs.contains(1))
+            return 1;
+        else if (xs.contains(3))
+            return 3;
+        else if (xs.contains(7))
+            return 7;
+        else if (xs.contains(9))
+            return 9;
+        return -1;
+    }
+
+    public int isEdge() {
+        return -1;
+    }
+
+    public void level1() {
+        Random rand = new Random();
+        ImageView O = new ImageView("O.png");
+        O.setFitHeight(105);
+        O.setFitWidth(110);
+        int i = 0;
+
+        if (hasWinningMove(os) == 0 && hasWinningMove(xs) == 0) {
+            if (turnCtr == 1)                   // always start corner
+                i = 1;
+            else if (turnCtr == 2) {
+                if (isCenter())
+                    i = 1;
+                else
+                    i = 5;
+            }
+            else if (turnCtr == 3) {
+                if (isCenter())                 // center play
+                    i = 9;
+                else if (isCorner() > 0) {      // corner play
+                    if (xs.contains(9))
+                        i = 7;
+                    else
+                        i = 9;
+                }
+                else {                          // edge play
+                    if (xs.contains(4))
+                        i = 3;
+                    else
+                        i = 7;
+                }
+            }
+            else if (turnCtr == 4) {
+
+            }
+            else if (turnCtr == 5) {
+                if (xs.contains(9))                             // user takes opposite corner
+                    i = 3;
+                else if (os.contains(7) || os.contains(3))      // double edge play
+                    i = 5;
+            }
+            else if (turnCtr == 6) {
+
+            }
+            else if (turnCtr == 8) {
+
+            }
+        }
+        else {  // has a winning move
+            if (hasWinningMove(os) > 0) {
+                i = hasWinningMove(os);
+                System.out.println("Winning Move: " + i);
+            }
+            else
+                i = hasWinningMove(xs);
+        }
+
+        // insert move
+        if (i == 1 && stck1.getChildren().isEmpty()) {
+            stck1.getChildren().add(O);
+            os.add(1);
+        }
+        else if (i == 2 && stck2.getChildren().isEmpty()) {
+            stck2.getChildren().add(O);
+            os.add(2);
+        }
+        else if (i == 3 && stck3.getChildren().isEmpty()) {
+            stck3.getChildren().add(O);
+            os.add(3);
+        }
+        else if (i == 4 && stck4.getChildren().isEmpty()) {
+            stck4.getChildren().add(O);
+            os.add(4);
+        }
+        else if (i == 5 && stck5.getChildren().isEmpty()) {
+            stck5.getChildren().add(O);
+            os.add(5);
+        }
+        else if (i == 6 && stck6.getChildren().isEmpty()) {
+            stck6.getChildren().add(O);
+            os.add(6);
+        }
+        else if (i == 7 && stck7.getChildren().isEmpty()) {
+            stck7.getChildren().add(O);
+            os.add(7);
+        }
+        else if (i == 8 && stck8.getChildren().isEmpty()) {
+            stck8.getChildren().add(O);
+            os.add(8);
+        }
+        else if (i == 9 && stck9.getChildren().isEmpty()) {
+            stck9.getChildren().add(O);
+            os.add(9);
+        }
+    }
+
     public void clearGrid()
     {
         stck1.getChildren().removeAll(stck1.getChildren());
@@ -533,6 +663,9 @@ public class Controller {
 
     public void playAgainClicked ()
     {
+        round++;
+        turnCtr = 1;
+
         xs = new ArrayList<>();
         os = new ArrayList<>();
 
@@ -541,6 +674,9 @@ public class Controller {
 
         dispUser.setText(Integer.toString(scoreUser));
         dispComp.setText(Integer.toString(scoreComp));
+
+        if (round % 2 == 1)
+            botMove();
 
         showPlayAgain(false);
     }
