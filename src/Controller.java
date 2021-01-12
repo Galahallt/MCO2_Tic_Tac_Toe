@@ -115,7 +115,6 @@ public class Controller {
                 turnCtr++;
 
                 if (checker(xs)) {
-                    System.out.println("If level " + level);
                     scoreUser++;
                     System.out.println("User Wins!");
 
@@ -125,7 +124,6 @@ public class Controller {
                     showPlayAgain(true);
                 }
                 else {
-                    System.out.println("Else Level " + level);
                     botMove();
                     System.out.println("One");
                 }
@@ -356,7 +354,7 @@ public class Controller {
                 }
                 else {
                     botMove();
-                    System.out.println("User Wins!");
+                    System.out.println("Nine");
                 }
             }
         }
@@ -365,18 +363,18 @@ public class Controller {
 
     public void botMove()
     {
-        System.out.println("BotMOve start Level " + level);
+        if (turnCtr > 9)
+            showPlayAgain(true);
+        //System.out.println("Turn: " + turnCtr);
         if (level == 0) {
-            System.out.println("Level 0 entered");
             level0();
         }
         else if (level == 1) {
-            System.out.println("Level 1 entered");
             level1();
         }
-        else
-            System.out.println("Nothing entered");
         turnCtr++;
+        if (turnCtr > 9)
+            showPlayAgain(true);
     }
 
     public boolean canMove()
@@ -388,7 +386,7 @@ public class Controller {
                 stck9.getChildren().isEmpty();
     }
 
-    public int hasWinningMove(ArrayList<Integer> os)
+    public int hasWinningMove(ArrayList<Integer> os, ArrayList<Integer> xs)
     {
         // checks horizontal
         if (os.contains(1) && os.contains(2) && !xs.contains(3))
@@ -441,8 +439,8 @@ public class Controller {
             return 9;
         else if (os.contains(6) && os.contains(9) && !xs.contains(3))
             return 3;
-        else if (os.contains(3) && os.contains(9) && !xs.contains(9))
-            return 9;
+        else if (os.contains(3) && os.contains(9) && !xs.contains(6))
+            return 6;
 
         return 0;
     }
@@ -461,10 +459,10 @@ public class Controller {
         {
             while (valid == 0)
             {
-                if (hasWinningMove(os) == 0)
+                if (hasWinningMove(os, xs) == 0)
                     i = 1 + rand.nextInt(10);
                 else {
-                    i = hasWinningMove(os);
+                    i = hasWinningMove(os, xs);
                     System.out.println("Winning Move: " + i);
                 }
                 if (i == 1 && stck1.getChildren().isEmpty()) {
@@ -581,8 +579,9 @@ public class Controller {
         O.setFitHeight(105);
         O.setFitWidth(110);
         int i = 0;
+        System.out.println("Level 1 TurnCtr " + turnCtr);
 
-        if (hasWinningMove(os) == 0 && hasWinningMove(xs) == 0) {
+        if (hasWinningMove(os, xs) == 0 && hasWinningMove(xs, os) == 0) {
             if (turnCtr == 1)                   // always start corner
                 i = 1;
             else if (turnCtr == 2) {            // take center if possible
@@ -608,11 +607,12 @@ public class Controller {
                 }
             }
             else if (turnCtr == 4) {
+                System.out.println("Inside turn 4");
                 if (isCenter(xs)) {                                 // center play
                     i = 3;
                 }
-                else if (xs.contains(1) && xs.contains(9) ||        // opposite corners play
-                        xs.contains(3) && xs.contains(7))
+                else if ((xs.contains(1) && xs.contains(9)) ||        // opposite corners play
+                        (xs.contains(3) && xs.contains(7)))
                     i = 2;
                 else if (isCorner(xs) > 0 && isEdge(xs) > 0)        // corned + edge play
                     i = opposite(isCorner(xs));
@@ -633,12 +633,12 @@ public class Controller {
             }
         }
         else {  // has a winning move
-            if (hasWinningMove(os) > 0) {
-                i = hasWinningMove(os);
+            if (hasWinningMove(os, xs) > 0) {       // take winning move
+                i = hasWinningMove(os, xs);
                 System.out.println("Winning Move: " + i);
             }
-            else
-                i = hasWinningMove(xs);
+            else        // block
+                i = hasWinningMove(xs, os);
         }
 
         // insert move
@@ -677,6 +677,16 @@ public class Controller {
         else if (i == 9 && stck9.getChildren().isEmpty()) {
             stck9.getChildren().add(O);
             os.add(9);
+        }
+
+        if (checker(os)) {
+            scoreComp++;
+            System.out.println("Computer Wins!");
+
+            grid.setDisable(true);
+            again.setDisable(false);
+            exit.setDisable(false);
+            showPlayAgain(true);
         }
     }
 
