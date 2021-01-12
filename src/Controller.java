@@ -405,8 +405,8 @@ public class Controller {
             return 9;
         else if (os.contains(8) && os.contains(9) && !xs.contains(7))
             return 7;
-        else if (os.contains(7) && os.contains(9) && !xs.contains(6))
-            return 6;
+        else if (os.contains(7) && os.contains(9) && !xs.contains(8))
+            return 8;
         // checks diagonal
         if (os.contains(1) && os.contains(5) && !xs.contains(9))
             return 9;
@@ -616,6 +616,17 @@ public class Controller {
                     i = 2;
                 else if (isCorner(xs) > 0 && isEdge(xs) > 0)        // corned + edge play
                     i = opposite(isCorner(xs));
+                else if (isEdge(xs) > 0 && xs.contains(opposite(isEdge(xs))))
+                    i = 3;
+                else if (isEdge(xs) > 0 && !xs.contains(opposite(isEdge(xs))))
+                {
+                    if (xs.contains(6) && xs.contains(8) ||
+                            xs.contains(2) && xs.contains(4))
+                        i = 3;
+                    else if (xs.contains(4) && xs.contains(8) ||
+                            xs.contains(2) && xs.contains(6))
+                        i = 1;
+                }
             }
             else if (turnCtr == 5) {
                 if (xs.contains(9))                             // user takes opposite corner
@@ -630,12 +641,33 @@ public class Controller {
                     else if (isCorner(os) == 3 || isCorner(os) == 7)
                         i = 9;
                 }
+                else if (isCenter(os) && isEdge(os) > 0)
+                {
+                    if (isEdge(os) == 4 || isEdge(os) == 6)
+                        i = 2;
+                    else if (isEdge(os) == 2 || isEdge(os) == 8)
+                        i = 4;
+                }
+            }
+            else if (turnCtr == 8) {
+                if (isEdge(os) == 2 && isCorner(os) == 7 ||   // oks
+                        isEdge(os) == 8 && isCorner(os) == 1) // oks
+                    i = 6;
+                else if ((isEdge(os) == 2 && isCorner(os) == 9 )|| // oks
+                        (isEdge(os) == 8 && isCorner(os) == 3)) // oks
+                    i = 4;
+                else if (isEdge(os) == 6 && isCorner(os) == 1 || // oks
+                        isEdge(os) == 4 && isCorner(os) == 3) // oks
+                    i = 8;
+                else if (isEdge(os) == 6 && isCorner(os) == 7 || // oks
+                        isEdge(os) == 4 && isCorner(os) == 9) //oks
+                    i = 2;
             }
         }
         else {  // has a winning move
             if (hasWinningMove(os, xs) > 0) {       // take winning move
                 i = hasWinningMove(os, xs);
-                System.out.println("Winning Move: " + i);
+                System.out.println("Take Winning Move: " + i);
             }
             else        // block
                 i = hasWinningMove(xs, os);
