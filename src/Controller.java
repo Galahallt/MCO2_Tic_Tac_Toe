@@ -36,7 +36,7 @@ public class Controller {
     private ArrayList<Integer> xs = new ArrayList<>();
     private ArrayList<Integer> os = new ArrayList<>();
 
-    private int level;
+    private static int level;
     private int round = 0;
     private int turnCtr = 1;
     private int scoreUser = 0;
