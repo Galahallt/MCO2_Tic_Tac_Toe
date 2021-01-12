@@ -115,6 +115,7 @@ public class Controller {
                 turnCtr++;
 
                 if (checker(xs)) {
+                    System.out.println("If level " + level);
                     scoreUser++;
                     System.out.println("User Wins!");
 
@@ -124,6 +125,7 @@ public class Controller {
                     showPlayAgain(true);
                 }
                 else {
+                    System.out.println("Else Level " + level);
                     botMove();
                     System.out.println("One");
                 }
@@ -363,8 +365,17 @@ public class Controller {
 
     public void botMove()
     {
-        if (level == 0)
+        System.out.println("BotMOve start Level " + level);
+        if (level == 0) {
+            System.out.println("Level 0 entered");
             level0();
+        }
+        else if (level == 1) {
+            System.out.println("Level 1 entered");
+            level1();
+        }
+        else
+            System.out.println("Nothing entered");
         turnCtr++;
     }
 
@@ -565,7 +576,7 @@ public class Controller {
     }
 
     public void level1() {
-        Random rand = new Random();
+        System.out.println("Level One entered");
         ImageView O = new ImageView("O.png");
         O.setFitHeight(105);
         O.setFitWidth(110);
@@ -574,7 +585,7 @@ public class Controller {
         if (hasWinningMove(os) == 0 && hasWinningMove(xs) == 0) {
             if (turnCtr == 1)                   // always start corner
                 i = 1;
-            else if (turnCtr == 2) {
+            else if (turnCtr == 2) {            // take center if possible
                 if (isCenter(xs))
                     i = 1;
                 else
