@@ -520,19 +520,48 @@ public class Controller {
     }
 
     public int opposite(int x) {
-        return 1;   // not yet coded
+        if (x == 1)
+            return 9;
+        else if (x == 2)
+            return 8;
+        else if (x == 3)
+            return 7;
+        else if (x == 4)
+            return 6;
+        else if (x == 6)
+            return 4;
+        else if (x == 7)
+            return 3;
+        else if (x == 8)
+            return 2;
+        else if (x == 9)
+            return 1;
+        else
+            return x;
     }
 
-    public boolean isCorner(ArrayList<Integer> xs) {
+    public int isCorner(ArrayList<Integer> xs) {
         if (xs.contains(1))
-            return true;
+            return 1;
         else if (xs.contains(3))
-            return true;
+            return 3;
         else if (xs.contains(7))
-            return true;
+            return 7;
         else if (xs.contains(9))
-            return true;
-        return false;
+            return 9;
+        return 0;
+    }
+
+    public int isEdge(ArrayList<Integer> xs) {
+        if (xs.contains(2))
+            return 2;
+        else if (xs.contains(4))
+            return 4;
+        else if (xs.contains(6))
+            return 6;
+        else if (xs.contains(8))
+            return 8;
+        return 0;
     }
 
     public void level1() {
@@ -554,7 +583,7 @@ public class Controller {
             else if (turnCtr == 3) {
                 if (isCenter(xs))                 // center play
                     i = 9;
-                else if (isCorner(xs)) {      // corner play
+                else if (isCorner(xs) > 0) {      // corner play
                     if (xs.contains(9))
                         i = 7;
                     else
@@ -568,13 +597,14 @@ public class Controller {
                 }
             }
             else if (turnCtr == 4) {
-                if (isCenter(xs)) {
+                if (isCenter(xs)) {                                 // center play
                     i = 3;
                 }
-                if (xs.contains(1) && xs.contains(9) ||
+                else if (xs.contains(1) && xs.contains(9) ||        // opposite corners play
                         xs.contains(3) && xs.contains(7))
                     i = 2;
-
+                else if (isCorner(xs) > 0 && isEdge(xs) > 0)        // corned + edge play
+                    i = opposite(isCorner(xs));
             }
             else if (turnCtr == 5) {
                 if (xs.contains(9))                             // user takes opposite corner
@@ -583,10 +613,12 @@ public class Controller {
                     i = 5;
             }
             else if (turnCtr == 6) {
-
-            }
-            else if (turnCtr == 8) {
-
+                if (isCenter(os) && isCorner(os) > 0) {         // user takes corner and two opposite edges (x1, x6, x8)
+                    if (isCorner(os) == 1 || isCorner(os) == 9)
+                        i = 3;
+                    else if (isCorner(os) == 3 || isCorner(os) == 7)
+                        i = 9;
+                }
             }
         }
         else {  // has a winning move
