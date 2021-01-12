@@ -515,7 +515,7 @@ public class Controller {
         }
     }
 
-    public boolean isCenter() {
+    public boolean isCenter(ArrayList<Integer> xs) {
         return xs.contains(5);
     }
 
@@ -523,20 +523,16 @@ public class Controller {
         return 1;   // not yet coded
     }
 
-    public int isCorner() {
+    public boolean isCorner(ArrayList<Integer> xs) {
         if (xs.contains(1))
-            return 1;
+            return true;
         else if (xs.contains(3))
-            return 3;
+            return true;
         else if (xs.contains(7))
-            return 7;
+            return true;
         else if (xs.contains(9))
-            return 9;
-        return -1;
-    }
-
-    public int isEdge() {
-        return -1;
+            return true;
+        return false;
     }
 
     public void level1() {
@@ -550,15 +546,15 @@ public class Controller {
             if (turnCtr == 1)                   // always start corner
                 i = 1;
             else if (turnCtr == 2) {
-                if (isCenter())
+                if (isCenter(xs))
                     i = 1;
                 else
                     i = 5;
             }
             else if (turnCtr == 3) {
-                if (isCenter())                 // center play
+                if (isCenter(xs))                 // center play
                     i = 9;
-                else if (isCorner() > 0) {      // corner play
+                else if (isCorner(xs)) {      // corner play
                     if (xs.contains(9))
                         i = 7;
                     else
@@ -572,6 +568,12 @@ public class Controller {
                 }
             }
             else if (turnCtr == 4) {
+                if (isCenter(xs)) {
+                    i = 3;
+                }
+                if (xs.contains(1) && xs.contains(9) ||
+                        xs.contains(3) && xs.contains(7))
+                    i = 2;
 
             }
             else if (turnCtr == 5) {
