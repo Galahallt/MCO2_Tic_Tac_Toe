@@ -1,3 +1,10 @@
+/*
+ *  Developed by: Paolo Espiritu
+ *                James Perez
+ *  Professor:    Joanna Rivera
+ *  Date:         January 13, 2021
+ */
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

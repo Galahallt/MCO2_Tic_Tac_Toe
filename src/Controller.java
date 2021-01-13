@@ -1,3 +1,10 @@
+/*
+ *  Developed by: Paolo Espiritu
+ *                James Perez
+ *  Professor:    Joanna Rivera
+ *  Date:         January 13, 2021
+ */
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.*;
@@ -10,9 +17,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Controller {
