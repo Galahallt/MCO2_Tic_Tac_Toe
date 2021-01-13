@@ -38,6 +38,10 @@ public class Controller {
     @FXML private StackPane stck8;
     @FXML private StackPane stck9;
 
+    @FXML private ImageView plyrWon;
+    @FXML private ImageView compWon;
+    @FXML private ImageView draw;
+
     @FXML private AnchorPane playAgain;
     @FXML private Button again; // yes
     @FXML private Button exit; // no
@@ -56,7 +60,6 @@ public class Controller {
     public void playClicked() throws IOException {
         level = Integer.parseInt(lvlNum.getText());
         lvlNum.setText("0");
-        System.out.println("Level: " + level);
 
         xs = new ArrayList<>();
         os = new ArrayList<>();
@@ -107,8 +110,7 @@ public class Controller {
         }
         if (spaces.contains(4)) {
             if (spaces.contains(5))
-                if (spaces.contains(6))
-                    return true;
+                return spaces.contains(6);
         }
 
         return false;
@@ -129,6 +131,9 @@ public class Controller {
                 if (checker(xs)) {
                     scoreUser++;
                     System.out.println("User Wins!");
+                    plyrWon.setVisible(true);
+                    compWon.setVisible(false);
+                    draw.setVisible(false);
 
                     grid.setDisable(true);
                     again.setDisable(false);
@@ -157,14 +162,19 @@ public class Controller {
                 if (checker(xs)) {
                     scoreUser++;
                     System.out.println("User Wins!");
+                    plyrWon.setVisible(true);
+                    compWon.setVisible(false);
+                    draw.setVisible(false);
 
                     grid.setDisable(true);
                     again.setDisable(false);
                     exit.setDisable(false);
                     showPlayAgain(true);
                 }
-                botMove();
-                System.out.println("Two");
+                else {
+                    botMove();
+                    System.out.println("Two");
+                }
             }
         }
 
@@ -183,6 +193,9 @@ public class Controller {
                 if (checker(xs)) {
                     scoreUser++;
                     System.out.println("User Wins!");
+                    plyrWon.setVisible(true);
+                    compWon.setVisible(false);
+                    draw.setVisible(false);
 
                     grid.setDisable(true);
                     again.setDisable(false);
@@ -212,15 +225,19 @@ public class Controller {
                 if (checker(xs)) {
                     scoreUser++;
                     System.out.println("User Wins!");
+                    plyrWon.setVisible(true);
+                    compWon.setVisible(false);
+                    draw.setVisible(false);
 
                     grid.setDisable(true);
                     again.setDisable(false);
                     exit.setDisable(false);
                     showPlayAgain(true);
                 }
-
-                botMove();
-                System.out.println("Four");
+                else {
+                    botMove();
+                    System.out.println("Four");
+                }
             }
         }
 
@@ -240,6 +257,9 @@ public class Controller {
                 if (checker(xs)) {
                     scoreUser++;
                     System.out.println("User Wins!");
+                    plyrWon.setVisible(true);
+                    compWon.setVisible(false);
+                    draw.setVisible(false);
 
                     grid.setDisable(true);
                     again.setDisable(false);
@@ -270,6 +290,9 @@ public class Controller {
                 if (checker(xs)) {
                     scoreUser++;
                     System.out.println("User Wins!");
+                    plyrWon.setVisible(true);
+                    compWon.setVisible(false);
+                    draw.setVisible(false);
 
                     grid.setDisable(true);
                     again.setDisable(false);
@@ -300,6 +323,9 @@ public class Controller {
                 if (checker(xs)) {
                     scoreUser++;
                     System.out.println("User Wins!");
+                    plyrWon.setVisible(true);
+                    compWon.setVisible(false);
+                    draw.setVisible(false);
 
                     grid.setDisable(true);
                     again.setDisable(false);
@@ -329,6 +355,9 @@ public class Controller {
                 if (checker(xs)) {
                     scoreUser++;
                     System.out.println("User Wins!");
+                    plyrWon.setVisible(true);
+                    compWon.setVisible(false);
+                    draw.setVisible(false);
 
                     grid.setDisable(true);
                     again.setDisable(false);
@@ -358,6 +387,9 @@ public class Controller {
                 if (checker(xs)) {
                     scoreUser++;
                     System.out.println("User Wins!");
+                    plyrWon.setVisible(true);
+                    compWon.setVisible(false);
+                    draw.setVisible(false);
 
                     grid.setDisable(true);
                     again.setDisable(false);
@@ -394,27 +426,24 @@ public class Controller {
             level2();
         }
         turnCtr++;
-        if (turnCtr > 9)
+        if (turnCtr > 9) {
+            plyrWon.setVisible(false);
+            compWon.setVisible(false);
+            draw.setVisible(true);
             showPlayAgain(true);
+        }
 
         if (checker(os)) {
             scoreComp++;
             System.out.println("Computer Wins!");
-
+            plyrWon.setVisible(false);
+            compWon.setVisible(true);
+            draw.setVisible(false);
             grid.setDisable(true);
             again.setDisable(false);
             exit.setDisable(false);
             showPlayAgain(true);
         }
-    }
-
-    public boolean canMove()
-    {
-        return stck1.getChildren().isEmpty() || stck2.getChildren().isEmpty() ||
-                stck3.getChildren().isEmpty() || stck4.getChildren().isEmpty() ||
-                stck5.getChildren().isEmpty() || stck6.getChildren().isEmpty() ||
-                stck7.getChildren().isEmpty() || stck8.getChildren().isEmpty() ||
-                stck9.getChildren().isEmpty();
     }
 
     public int hasWinningMove(ArrayList<Integer> os, ArrayList<Integer> xs)
@@ -572,24 +601,21 @@ public class Controller {
     public void level0()
     {
         Random rand = new Random();
-        ImageView O = new ImageView("O.png");
-        O.setFitHeight(105);
-        O.setFitWidth(110);
-        int i = 0;
+        int i;
 
         int valid = 0;
 
-        if (canMove())
+        while (valid == 0)
         {
-            while (valid == 0)
-            {
-                if (hasWinningMove(os, xs) == 0)
-                    i = 1 + rand.nextInt(10);
-                else {
-                    i = hasWinningMove(os, xs);
-                    System.out.println("Winning Move: " + i);
-                }
+            if (hasWinningMove(os, xs) == 0)
+                i = 1 + rand.nextInt(9);
+            else {
+                i = hasWinningMove(os, xs);
+                System.out.println("Winning Move: " + i);
+            }
+            if (!os.contains(i) && !xs.contains(i)) {
                 addCompMove(i);
+                valid = 1;
             }
         }
 
@@ -597,7 +623,7 @@ public class Controller {
 
     public void level1() {
         int i = 0;
-
+        System.out.println("Turn: " + turnCtr);
         if (hasWinningMove(os, xs) == 0 && hasWinningMove(xs, os) == 0) {
             if (turnCtr == 1)                   // always start corner
                 i = 1;
@@ -666,18 +692,25 @@ public class Controller {
                 }
             }
             else if (turnCtr == 8) {
-                if (isEdge(os) == 2 && isCorner(os) == 7 ||   // oks
-                        isEdge(os) == 8 && isCorner(os) == 1) // oks
+                if (isEdge(os) == 2 && isCorner(os) == 7 ||
+                        isEdge(os) == 8 && isCorner(os) == 1)
                     i = 6;
-                else if ((isEdge(os) == 2 && isCorner(os) == 9 )|| // oks
-                        (isEdge(os) == 8 && isCorner(os) == 3)) // oks
+                else if (isEdge(os) == 2 && isCorner(os) == 9 && !os.contains(4)||
+                        isEdge(os) == 8 && isCorner(os) == 3 && !os.contains(4))
                     i = 4;
-                else if (isEdge(os) == 6 && isCorner(os) == 1 || // oks
-                        isEdge(os) == 4 && isCorner(os) == 3) // oks
+                else if (isEdge(os) == 6 && isCorner(os) == 1 && !os.contains(8) ||
+                        isEdge(os) == 4 && isCorner(os) == 3 && !os.contains(8))
                     i = 8;
-                else if (isEdge(os) == 6 && isCorner(os) == 7 || // oks
-                        isEdge(os) == 4 && isCorner(os) == 9) //oks
+                else if (isEdge(os) == 6 && isCorner(os) == 7 ||
+                        isEdge(os) == 4 && isCorner(os) == 9)
                     i = 2;
+                else if (isCorner(os) == 1 && os.contains(6) && os.contains(8) || //oks
+                        isCorner(os) == 9 && os.contains(2) && os.contains(4))
+                    i = 3;
+                else if (isCorner(os) == 3 && os.contains(4) && os.contains(8) ||
+                        isCorner(os) == 7 && os.contains(2) && os.contains(6))
+                    i = 1;
+                System.out.println("i value: " + i);
             }
         }
         else {  // has a winning move
@@ -730,7 +763,7 @@ public class Controller {
     public int minimax(ArrayList<Integer> os, ArrayList<Integer> xs, boolean isMaximizing)
     {
         String result = pointSys(os, xs);
-        if (result != "null")
+        if (!result.equals("null"))
         {
             int score = switch (result) {
                 case "win" -> 1;
@@ -739,6 +772,7 @@ public class Controller {
             };
             return score;
         }
+
 
         int bestScore;
         if (isMaximizing)
@@ -756,7 +790,6 @@ public class Controller {
                     bestScore = Math.max(score, bestScore);
                 }
             }
-
         }
         else {
             bestScore = Integer.MAX_VALUE;
@@ -772,7 +805,6 @@ public class Controller {
                     bestScore = Math.min(score, bestScore);
                 }
             }
-
         }
         return bestScore;
     }

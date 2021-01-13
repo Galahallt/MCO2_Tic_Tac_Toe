@@ -68,9 +68,19 @@
       </GridPane>
       <AnchorPane fx:id="playAgain" disable="true" prefHeight="600.0" prefWidth="800.0" visible="false">
          <children>
-            <ImageView fitHeight="598.0" fitWidth="805.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="compWon" fitHeight="600.0" fitWidth="806.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@PlayAgain.PNG" />
+                  <Image url="@CompWon.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="plyrWon" fitHeight="600.0" fitWidth="806.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@PlayerWon.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="draw" fitHeight="600.0" fitWidth="806.0" layoutX="1.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Draw.PNG" />
                </image>
             </ImageView>
             <ImageView fitHeight="170.0" fitWidth="188.0" layoutX="58.0" layoutY="416.0" pickOnBounds="true" preserveRatio="true" rotate="115.0">
@@ -83,14 +93,19 @@
                   <Image url="@eraser.png" />
                </image>
             </ImageView>
-            <Button fx:id="exit" layoutX="456.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#noClicked" prefHeight="142.0" prefWidth="199.0" style="-fx-background-color: transparent;" text="NO">
+            <Button fx:id="again" layoutX="256.0" layoutY="345.0" mnemonicParsing="false" onMouseClicked="#playAgainClicked" prefHeight="98.0" prefWidth="151.0" style="-fx-background-color: transparent;" text="YES">
                <font>
-                  <Font name="Comic Sans MS" size="60.0" />
+                  <Font name="Comic Sans MS" size="40.0" />
                </font>
             </Button>
-            <Button fx:id="again" layoutX="190.0" layoutY="232.0" mnemonicParsing="false" onMouseClicked="#playAgainClicked" prefHeight="142.0" prefWidth="199.0" style="-fx-background-color: transparent;" text="YES">
+            <TextField alignment="CENTER" layoutX="220.0" layoutY="234.0" prefHeight="130.0" prefWidth="406.0" style="-fx-background-color: transparent;" text="PLAY AGAIN?">
                <font>
-                  <Font name="Comic Sans MS" size="59.0" />
+                  <Font name="Comic Sans MS" size="50.0" />
+               </font>
+            </TextField>
+            <Button fx:id="exit" layoutX="423.0" layoutY="345.0" mnemonicParsing="false" onMouseClicked="#noClicked" prefHeight="98.0" prefWidth="151.0" style="-fx-background-color: transparent;" text="NO">
+               <font>
+                  <Font name="Comic Sans MS" size="40.0" />
                </font>
             </Button>
          </children>
