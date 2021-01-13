@@ -693,7 +693,7 @@ public class Controller {
             {
                 os.add(i);
                 turnCtr++;
-                int score = minimax(os, xs, 0, false);
+                int score = minimax(os, xs, false);
                 os.remove(os.size()-1);
                 turnCtr--;
                 if (score > bestScore) {
@@ -727,14 +727,14 @@ public class Controller {
             return "null";
     }
 
-    public int minimax(ArrayList<Integer> os, ArrayList<Integer> xs, int depth, boolean isMaximizing)
+    public int minimax(ArrayList<Integer> os, ArrayList<Integer> xs, boolean isMaximizing)
     {
         String result = pointSys(os, xs);
         if (result != "null")
         {
             int score = switch (result) {
-                case "win" -> 10;
-                case "lose" -> -10;
+                case "win" -> 1;
+                case "lose" -> -1;
                 default -> 0;
             };
             return score;
@@ -750,7 +750,7 @@ public class Controller {
                 {
                     os.add(i);
                     turnCtr++;
-                    int score = minimax(os, xs, depth + 1, false);
+                    int score = minimax(os, xs, false);
                     os.remove(os.size()-1);
                     turnCtr--;
                     bestScore = Math.max(score, bestScore);
@@ -766,7 +766,7 @@ public class Controller {
                 {
                     xs.add(i);
                     turnCtr++;
-                    int score = minimax(os, xs,depth + 1, true);
+                    int score = minimax(os, xs,true);
                     xs.remove(xs.size()-1);
                     turnCtr--;
                     bestScore = Math.min(score, bestScore);
@@ -789,6 +789,7 @@ public class Controller {
         stck8.getChildren().removeAll(stck8.getChildren());
         stck9.getChildren().removeAll(stck9.getChildren());
     }
+    
     public void showPlayAgain(boolean x)
     {
         if (x)
