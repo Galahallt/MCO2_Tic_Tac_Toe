@@ -1,3 +1,5 @@
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -7,6 +9,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.*;
@@ -365,6 +369,15 @@ public class Controller {
 
     public void botMove()
     {
+        Timeline delay = new Timeline(
+                new KeyFrame(
+                        Duration.millis(400), event -> levelCall()
+                )
+        );
+        delay.play();
+    }
+
+    public void levelCall() {
         if (level == 0) {
             level0();
         }
@@ -377,6 +390,16 @@ public class Controller {
         turnCtr++;
         if (turnCtr > 9)
             showPlayAgain(true);
+
+        if (checker(os)) {
+            scoreComp++;
+            System.out.println("Computer Wins!");
+
+            grid.setDisable(true);
+            again.setDisable(false);
+            exit.setDisable(false);
+            showPlayAgain(true);
+        }
     }
 
     public boolean canMove()
@@ -564,15 +587,6 @@ public class Controller {
             }
         }
 
-        if (checker(os)) {
-            scoreComp++;
-            System.out.println("Computer Wins!");
-
-            grid.setDisable(true);
-            again.setDisable(false);
-            exit.setDisable(false);
-            showPlayAgain(true);
-        }
     }
 
     public void level1() {
@@ -670,16 +684,6 @@ public class Controller {
 
         // insert move
         addCompMove(i);
-
-        if (checker(os)) {
-            scoreComp++;
-            System.out.println("Computer Wins!");
-
-            grid.setDisable(true);
-            again.setDisable(false);
-            exit.setDisable(false);
-            showPlayAgain(true);
-        }
     }
 
     public void level2() {
@@ -704,16 +708,6 @@ public class Controller {
         }
         System.out.println("Level 2 Best Move: " + bestMove);
         addCompMove(bestMove);
-
-        if (checker(os)) {
-            scoreComp++;
-            System.out.println("Computer Wins!");
-
-            grid.setDisable(true);
-            again.setDisable(false);
-            exit.setDisable(false);
-            showPlayAgain(true);
-        }
     }
 
     public String pointSys(ArrayList<Integer> os, ArrayList<Integer> xs) {
@@ -791,6 +785,15 @@ public class Controller {
     }
     
     public void showPlayAgain(boolean x)
+    {
+        Timeline delay = new Timeline(
+                new KeyFrame(
+                        Duration.millis(400), event -> delayedPlayAgain(x)
+                )
+        );
+        delay.play();
+    }
+    public void delayedPlayAgain(boolean x)
     {
         if (x)
         {
