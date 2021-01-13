@@ -77,11 +77,11 @@ public class Controller {
                 if (spaces.contains(3))
                     return true;
             }
-            else if (spaces.contains(4)) {
+            if (spaces.contains(4)) {
                 if (spaces.contains(7))
                     return true;
             }
-            else if (spaces.contains(5)) {
+            if (spaces.contains(5)) {
                 if (spaces.contains(9))
                     return true;
             }
@@ -91,7 +91,7 @@ public class Controller {
                 if (spaces.contains(9))
                     return true;
             }
-            else if (spaces.contains(5)) {
+            if (spaces.contains(5)) {
                 if (spaces.contains(7))
                     return true;
             }
@@ -728,7 +728,7 @@ public class Controller {
     public void level2() {
 
         int bestScore = Integer.MIN_VALUE;
-        int bestMove = 0;
+        int bestMove = 1;
 
         for (int i = 1; i <= 9; i++)
         {
@@ -737,15 +737,18 @@ public class Controller {
                 os.add(i);
                 turnCtr++;
                 int score = minimax(os, xs, false);
+                //System.out.println("new move: " + i + " os: " + os.toString() + " xs: " + xs.toString() + " score: " + score);
+
                 os.remove(os.size()-1);
                 turnCtr--;
                 if (score > bestScore) {
+                    //System.out.println("MAX: " + score + " MIN: " + bestScore + " Best Move: " + bestMove);
                     bestScore = score;
                     bestMove = i;
+                    //System.out.println("Updated Best Move: " + bestMove);
                 }
             }
         }
-        System.out.println("Level 2 Best Move: " + bestMove);
         addCompMove(bestMove);
     }
 
@@ -770,6 +773,7 @@ public class Controller {
                 case "lose" -> -1;
                 default -> 0;
             };
+            //System.out.println(score);
             return score;
         }
 
