@@ -688,20 +688,20 @@ public class Controller {
     }
 
     public void level2() {
-        boolean isMaximizing = true;
-        if (round%2 == 0)
-            isMaximizing = false;
+        System.out.println("turn: " + turnCtr);
 
         int bestScore = Integer.MIN_VALUE;
         int bestMove = 0;
 
-        for (int i = 1; i < 9; i++)
+        for (int i = 1; i <= 9; i++)
         {
             if (!os.contains(i) && !xs.contains(i))
             {
                 os.add(i);
-                int score = minimax(os, xs, 1, isMaximizing);
+                turnCtr++;
+                int score = minimax(os, xs, 0, false);
                 os.remove(os.size()-1);
+                turnCtr--;
                 if (score > bestScore) {
                     bestScore = score;
                     bestMove = i;
@@ -740,45 +740,51 @@ public class Controller {
         if (result != "null")
         {
             int score = switch (result) {
-                case "win" -> 1;
-                case "lose" -> -1;
+                case "win" -> 10;
+                case "lose" -> -10;
                 default -> 0;
             };
             System.out.println("result: " + result + " score: " + score);
             return score;
         }
 
+        int bestScore;
         if (isMaximizing)
         {
-            System.out.println("in maximize");
-            int bestScore = Integer.MIN_VALUE;
-            for (int i = 1; i < 9; i++)
+            //System.out.println("in maximize");
+            bestScore = Integer.MIN_VALUE;
+            for (int i = 1; i <= 9; i++)
             {
                 if (!os.contains(i) && !xs.contains(i))
                 {
                     os.add(i);
+                    turnCtr++;
                     int score = minimax(os, xs, depth + 1, false);
                     os.remove(os.size()-1);
+                    turnCtr--;
                     bestScore = Math.max(score, bestScore);
                 }
             }
-            return bestScore;
+
         }
         else {
-            System.out.println("in minimize");
-            int bestScore = Integer.MAX_VALUE;
-            for (int i = 1; i < 9; i++)
+            //System.out.println("in minimize");
+            bestScore = Integer.MAX_VALUE;
+            for (int i = 1; i <= 9; i++)
             {
                 if (!os.contains(i) && !xs.contains(i))
                 {
                     xs.add(i);
+                    turnCtr++;
                     int score = minimax(os, xs,depth + 1, true);
                     xs.remove(xs.size()-1);
+                    turnCtr--;
                     bestScore = Math.min(score, bestScore);
                 }
             }
-            return bestScore;
+
         }
+        return bestScore;
     }
 
     public void clearGrid()
