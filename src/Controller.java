@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Controller {
@@ -538,7 +539,6 @@ public class Controller {
             stck9.getChildren().add(O);
             os.add(9);
         }
-
     }
 
     public void level0()
@@ -688,9 +688,9 @@ public class Controller {
     }
 
     public void level2() {
-        ImageView O = new ImageView("O.png");
-        O.setFitHeight(105);
-        O.setFitWidth(110);
+        boolean isMaximizing = true;
+        if (round%2 == 0)
+            isMaximizing = false;
 
         int bestScore = Integer.MIN_VALUE;
         int bestMove = 0;
@@ -700,21 +700,30 @@ public class Controller {
             if (!os.contains(i) && !xs.contains(i))
             {
                 os.add(i);
-                int score = minimax(1, false);
+                int score = minimax(os, xs, 1, isMaximizing);
                 os.remove(os.size()-1);
                 if (score > bestScore) {
                     bestScore = score;
                     bestMove = i;
-
                 }
                 System.out.println("level2: " + bestMove);
             }
         }
         System.out.println("Best Move: " + bestMove);
         addCompMove(bestMove);
+
+        if (checker(os)) {
+            scoreComp++;
+            System.out.println("Computer Wins!");
+
+            grid.setDisable(true);
+            again.setDisable(false);
+            exit.setDisable(false);
+            showPlayAgain(true);
+        }
     }
 
-    public String pointSys() {
+    public String pointSys(ArrayList<Integer> os, ArrayList<Integer> xs) {
         if (checker(os))
             return "win";
         else if (checker(xs))
@@ -724,18 +733,17 @@ public class Controller {
         else
             return "null";
     }
-    
-    public int minimax(int depth, boolean isMaximizing)
+
+    public int minimax(ArrayList<Integer> os, ArrayList<Integer> xs, int depth, boolean isMaximizing)
     {
-        String result = pointSys();
+        String result = pointSys(os, xs);
         if (result != "null")
         {
-            int score = 0;
-            switch (result){
-                case "win": score = 1; break;
-                case "lose": score = -1; break;
-                case "tie": score = 0; break;
-            }
+            int score = switch (result) {
+                case "win" -> 1;
+                case "lose" -> -1;
+                default -> 0;
+            };
             System.out.println("result: " + result + " score: " + score);
             return score;
         }
@@ -749,7 +757,7 @@ public class Controller {
                 if (!os.contains(i) && !xs.contains(i))
                 {
                     os.add(i);
-                    int score = minimax(depth + 1, false);
+                    int score = minimax(os, xs, depth + 1, false);
                     os.remove(os.size()-1);
                     bestScore = Math.max(score, bestScore);
                 }
@@ -758,14 +766,14 @@ public class Controller {
         }
         else {
             System.out.println("in minimize");
-            int bestScore = Integer.MIN_VALUE;
+            int bestScore = Integer.MAX_VALUE;
             for (int i = 1; i < 9; i++)
             {
                 if (!os.contains(i) && !xs.contains(i))
                 {
-                    os.add(i);
-                    int score = minimax(depth + 1, true);
-                    os.remove(os.size()-1);
+                    xs.add(i);
+                    int score = minimax(os, xs,depth + 1, true);
+                    xs.remove(xs.size()-1);
                     bestScore = Math.min(score, bestScore);
                 }
             }
