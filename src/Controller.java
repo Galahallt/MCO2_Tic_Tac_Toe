@@ -96,7 +96,8 @@ public class Controller {
         }
         if (spaces.contains(4)) {
             if (spaces.contains(5))
-                return spaces.contains(6);
+                if (spaces.contains(6))
+                    return true;
         }
 
         return false;
@@ -363,14 +364,15 @@ public class Controller {
 
     public void botMove()
     {
-        if (turnCtr > 9)
-            showPlayAgain(true);
         //System.out.println("Turn: " + turnCtr);
         if (level == 0) {
             level0();
         }
         else if (level == 1) {
             level1();
+        }
+        else if (level == 2) {
+            level2();
         }
         turnCtr++;
         if (turnCtr > 9)
@@ -445,85 +447,6 @@ public class Controller {
         return 0;
     }
 
-    public void level0()
-    {
-        Random rand = new Random();
-        ImageView O = new ImageView("O.png");
-        O.setFitHeight(105);
-        O.setFitWidth(110);
-        int i = 0;
-
-        int valid = 0;
-
-        if (canMove())
-        {
-            while (valid == 0)
-            {
-                if (hasWinningMove(os, xs) == 0)
-                    i = 1 + rand.nextInt(10);
-                else {
-                    i = hasWinningMove(os, xs);
-                    System.out.println("Winning Move: " + i);
-                }
-                if (i == 1 && stck1.getChildren().isEmpty()) {
-                    stck1.getChildren().add(O);
-                    os.add(1);
-                    valid = 1;
-                }
-                else if (i == 2 && stck2.getChildren().isEmpty()) {
-                    stck2.getChildren().add(O);
-                    os.add(2);
-                    valid = 1;
-                }
-                else if (i == 3 && stck3.getChildren().isEmpty()) {
-                    stck3.getChildren().add(O);
-                    os.add(3);
-                    valid = 1;
-                }
-                else if (i == 4 && stck4.getChildren().isEmpty()) {
-                    stck4.getChildren().add(O);
-                    os.add(4);
-                    valid = 1;
-                }
-                else if (i == 5 && stck5.getChildren().isEmpty()) {
-                    stck5.getChildren().add(O);
-                    os.add(5);
-                    valid = 1;
-                }
-                else if (i == 6 && stck6.getChildren().isEmpty()) {
-                    stck6.getChildren().add(O);
-                    os.add(6);
-                    valid = 1;
-                }
-                else if (i == 7 && stck7.getChildren().isEmpty()) {
-                    stck7.getChildren().add(O);
-                    os.add(7);
-                    valid = 1;
-                }
-                else if (i == 8 && stck8.getChildren().isEmpty()) {
-                    stck8.getChildren().add(O);
-                    os.add(8);
-                    valid = 1;
-                }
-                else if (i == 9 && stck9.getChildren().isEmpty()) {
-                    stck9.getChildren().add(O);
-                    os.add(9);
-                    valid = 1;
-                }
-            }
-        }
-
-        if (checker(os)) {
-            scoreComp++;
-            System.out.println("Computer Wins!");
-
-            grid.setDisable(true);
-            again.setDisable(false);
-            exit.setDisable(false);
-            showPlayAgain(true);
-        }
-    }
-
     public boolean isCenter(ArrayList<Integer> xs) {
         return xs.contains(5);
     }
@@ -573,11 +496,88 @@ public class Controller {
         return 0;
     }
 
-    public void level1() {
-        System.out.println("Level One entered");
+    public void addCompMove(int i)
+    {
         ImageView O = new ImageView("O.png");
         O.setFitHeight(105);
         O.setFitWidth(110);
+
+        if (i == 1 && stck1.getChildren().isEmpty()) {
+            stck1.getChildren().add(O);
+            os.add(1);
+        }
+        else if (i == 2 && stck2.getChildren().isEmpty()) {
+            stck2.getChildren().add(O);
+            os.add(2);
+        }
+        else if (i == 3 && stck3.getChildren().isEmpty()) {
+            stck3.getChildren().add(O);
+            os.add(3);
+        }
+        else if (i == 4 && stck4.getChildren().isEmpty()) {
+            stck4.getChildren().add(O);
+            os.add(4);
+        }
+        else if (i == 5 && stck5.getChildren().isEmpty()) {
+            stck5.getChildren().add(O);
+            os.add(5);
+        }
+        else if (i == 6 && stck6.getChildren().isEmpty()) {
+            stck6.getChildren().add(O);
+            os.add(6);
+        }
+        else if (i == 7 && stck7.getChildren().isEmpty()) {
+            stck7.getChildren().add(O);
+            os.add(7);
+        }
+        else if (i == 8 && stck8.getChildren().isEmpty()) {
+            stck8.getChildren().add(O);
+            os.add(8);
+        }
+        else if (i == 9 && stck9.getChildren().isEmpty()) {
+            stck9.getChildren().add(O);
+            os.add(9);
+        }
+
+    }
+
+    public void level0()
+    {
+        Random rand = new Random();
+        ImageView O = new ImageView("O.png");
+        O.setFitHeight(105);
+        O.setFitWidth(110);
+        int i = 0;
+
+        int valid = 0;
+
+        if (canMove())
+        {
+            while (valid == 0)
+            {
+                if (hasWinningMove(os, xs) == 0)
+                    i = 1 + rand.nextInt(10);
+                else {
+                    i = hasWinningMove(os, xs);
+                    System.out.println("Winning Move: " + i);
+                }
+                addCompMove(i);
+            }
+        }
+
+        if (checker(os)) {
+            scoreComp++;
+            System.out.println("Computer Wins!");
+
+            grid.setDisable(true);
+            again.setDisable(false);
+            exit.setDisable(false);
+            showPlayAgain(true);
+        }
+    }
+
+    public void level1() {
+        System.out.println("Level One entered");
         int i = 0;
         System.out.println("Level 1 TurnCtr " + turnCtr);
 
@@ -674,42 +674,7 @@ public class Controller {
         }
 
         // insert move
-        if (i == 1 && stck1.getChildren().isEmpty()) {
-            stck1.getChildren().add(O);
-            os.add(1);
-        }
-        else if (i == 2 && stck2.getChildren().isEmpty()) {
-            stck2.getChildren().add(O);
-            os.add(2);
-        }
-        else if (i == 3 && stck3.getChildren().isEmpty()) {
-            stck3.getChildren().add(O);
-            os.add(3);
-        }
-        else if (i == 4 && stck4.getChildren().isEmpty()) {
-            stck4.getChildren().add(O);
-            os.add(4);
-        }
-        else if (i == 5 && stck5.getChildren().isEmpty()) {
-            stck5.getChildren().add(O);
-            os.add(5);
-        }
-        else if (i == 6 && stck6.getChildren().isEmpty()) {
-            stck6.getChildren().add(O);
-            os.add(6);
-        }
-        else if (i == 7 && stck7.getChildren().isEmpty()) {
-            stck7.getChildren().add(O);
-            os.add(7);
-        }
-        else if (i == 8 && stck8.getChildren().isEmpty()) {
-            stck8.getChildren().add(O);
-            os.add(8);
-        }
-        else if (i == 9 && stck9.getChildren().isEmpty()) {
-            stck9.getChildren().add(O);
-            os.add(9);
-        }
+        addCompMove(i);
 
         if (checker(os)) {
             scoreComp++;
@@ -719,6 +684,92 @@ public class Controller {
             again.setDisable(false);
             exit.setDisable(false);
             showPlayAgain(true);
+        }
+    }
+
+    public void level2() {
+        ImageView O = new ImageView("O.png");
+        O.setFitHeight(105);
+        O.setFitWidth(110);
+
+        int bestScore = Integer.MIN_VALUE;
+        int bestMove = 0;
+
+        for (int i = 1; i < 9; i++)
+        {
+            if (!os.contains(i) && !xs.contains(i))
+            {
+                os.add(i);
+                int score = minimax(1, false);
+                os.remove(os.size()-1);
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestMove = i;
+
+                }
+                System.out.println("level2: " + bestMove);
+            }
+        }
+        System.out.println("Best Move: " + bestMove);
+        addCompMove(bestMove);
+    }
+
+    public String pointSys() {
+        if (checker(os))
+            return "win";
+        else if (checker(xs))
+            return "lose";
+        else if (turnCtr > 9)
+            return "tie";
+        else
+            return "null";
+    }
+    
+    public int minimax(int depth, boolean isMaximizing)
+    {
+        String result = pointSys();
+        if (result != "null")
+        {
+            int score = 0;
+            switch (result){
+                case "win": score = 1; break;
+                case "lose": score = -1; break;
+                case "tie": score = 0; break;
+            }
+            System.out.println("result: " + result + " score: " + score);
+            return score;
+        }
+
+        if (isMaximizing)
+        {
+            System.out.println("in maximize");
+            int bestScore = Integer.MIN_VALUE;
+            for (int i = 1; i < 9; i++)
+            {
+                if (!os.contains(i) && !xs.contains(i))
+                {
+                    os.add(i);
+                    int score = minimax(depth + 1, false);
+                    os.remove(os.size()-1);
+                    bestScore = Math.max(score, bestScore);
+                }
+            }
+            return bestScore;
+        }
+        else {
+            System.out.println("in minimize");
+            int bestScore = Integer.MIN_VALUE;
+            for (int i = 1; i < 9; i++)
+            {
+                if (!os.contains(i) && !xs.contains(i))
+                {
+                    os.add(i);
+                    int score = minimax(depth + 1, true);
+                    os.remove(os.size()-1);
+                    bestScore = Math.min(score, bestScore);
+                }
+            }
+            return bestScore;
         }
     }
 
