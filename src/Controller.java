@@ -365,7 +365,6 @@ public class Controller {
 
     public void botMove()
     {
-        //System.out.println("Turn: " + turnCtr);
         if (level == 0) {
             level0();
         }
@@ -577,9 +576,7 @@ public class Controller {
     }
 
     public void level1() {
-        System.out.println("Level One entered");
         int i = 0;
-        System.out.println("Level 1 TurnCtr " + turnCtr);
 
         if (hasWinningMove(os, xs) == 0 && hasWinningMove(xs, os) == 0) {
             if (turnCtr == 1)                   // always start corner
@@ -607,7 +604,6 @@ public class Controller {
                 }
             }
             else if (turnCtr == 4) {
-                System.out.println("Inside turn 4");
                 if (isCenter(xs)) {                                 // center play
                     i = 3;
                 }
@@ -667,7 +663,6 @@ public class Controller {
         else {  // has a winning move
             if (hasWinningMove(os, xs) > 0) {       // take winning move
                 i = hasWinningMove(os, xs);
-                System.out.println("Take Winning Move: " + i);
             }
             else        // block
                 i = hasWinningMove(xs, os);
@@ -688,7 +683,6 @@ public class Controller {
     }
 
     public void level2() {
-        System.out.println("turn: " + turnCtr);
 
         int bestScore = Integer.MIN_VALUE;
         int bestMove = 0;
@@ -706,10 +700,9 @@ public class Controller {
                     bestScore = score;
                     bestMove = i;
                 }
-                System.out.println("level2: " + bestMove);
             }
         }
-        System.out.println("Best Move: " + bestMove);
+        System.out.println("Level 2 Best Move: " + bestMove);
         addCompMove(bestMove);
 
         if (checker(os)) {
@@ -744,14 +737,12 @@ public class Controller {
                 case "lose" -> -10;
                 default -> 0;
             };
-            System.out.println("result: " + result + " score: " + score);
             return score;
         }
 
         int bestScore;
         if (isMaximizing)
         {
-            //System.out.println("in maximize");
             bestScore = Integer.MIN_VALUE;
             for (int i = 1; i <= 9; i++)
             {
@@ -768,7 +759,6 @@ public class Controller {
 
         }
         else {
-            //System.out.println("in minimize");
             bestScore = Integer.MAX_VALUE;
             for (int i = 1; i <= 9; i++)
             {
