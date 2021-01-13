@@ -1,3 +1,4 @@
+import javafx.animation.*;
 import javafx.fxml.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -7,6 +8,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.*;
+
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.*;
@@ -365,6 +368,19 @@ public class Controller {
 
     public void botMove()
     {
+        Timeline delay = new Timeline(
+                new KeyFrame(
+                        Duration.millis(400), event -> levelCall()
+                )
+        );
+        delay.play();
+
+        turnCtr++;
+        if (turnCtr > 9)
+            showPlayAgain(true);
+    }
+
+    public void levelCall() {
         if (level == 0) {
             level0();
         }
@@ -374,9 +390,6 @@ public class Controller {
         else if (level == 2) {
             level2();
         }
-        turnCtr++;
-        if (turnCtr > 9)
-            showPlayAgain(true);
     }
 
     public boolean canMove()
