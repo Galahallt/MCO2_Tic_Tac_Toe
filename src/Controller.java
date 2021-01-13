@@ -7,6 +7,7 @@
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.fxml.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
