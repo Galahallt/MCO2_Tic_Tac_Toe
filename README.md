@@ -2,7 +2,7 @@
 In this project, we created 3 levels of AI:
 - Level 0 → uses random guesses to play the game.
 - Level 1 → uses hard coded tic-tac-toe strategies by taking advantage of symmetries.
-- Level 3 → uses a Mini-Max algorithm.
+- Level 2 → uses a Mini-Max algorithm.
 
 Enjoy! 👾
 
